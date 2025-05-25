@@ -27,13 +27,13 @@ body {
 
 
 a, .uk-link {
-color: #AD9A00;
+color: #7F00FF;
 text-decoration: none;
 cursor: pointer;
 }
 
 .uk-link {
-  color: #AD9A00;
+  color: #7F00FF;
   text-decoration: none;
   cursor: pointer;
 }
@@ -41,7 +41,7 @@ cursor: pointer;
 a:hover,
 .uk-link:hover,
 .uk-link-toggle:hover .uk-link {
-  color: #AD9A00;
+  color: #7F00FF;
   text-decoration: underline;
 }
 
@@ -52,7 +52,7 @@ a:hover,
 a.uk-link-heading:hover,
 .uk-link-heading a:hover,
 .uk-link-toggle:hover .uk-link-heading {
-  color: #AD9A00;
+  color: #7F00FF;
   text-decoration: none;
 }
 
@@ -61,18 +61,18 @@ a.uk-link-heading:hover,
  ========================================================================== */
 
 .uk-icon-button {
-  background: #AD9A00;
+  background: #7F00FF;
   color: #fff;
 }
 
 .uk-icon-button:hover {
-  background-color: #000;
+  background-color: #FF0000;
   color: #fff;
 }
 
 .uk-icon-button:active,
 .uk-active > .uk-icon-button {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   color: #fff;
 }
 
@@ -82,88 +82,77 @@ a.uk-link-heading:hover,
   outline: none;
   background-color: #fff;
   color: #000;
-  border-color: #AD9A00;
+  border-color: #7F00FF;
 }
 
 .uk-radio:focus,
 .uk-checkbox:focus {
   background-color: rgba(0, 0, 0, 0);
   outline: none;
-  border-color: #AD9A00;
+  border-color: #7F00FF;
 }
 
 .uk-radio:checked,
 .uk-checkbox:checked,
 .uk-checkbox:indeterminate {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   border-color: transparent;
 }
 
 .uk-radio:checked:focus,
 .uk-checkbox:checked:focus,
 .uk-checkbox:indeterminate:focus {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
 }
 
 .uk-radio:disabled,
 .uk-checkbox:disabled {
-  background-color: #AD9A00;
-  border-color: #AD9A00;
+  background-color: #7F00FF;
+  border-color: #7F00FF;
 }
 
 .uk-light .uk-button-secondary, .uk-section-primary:not(.uk-preserve-color) .uk-button-secondary, .uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary, .uk-tile-primary:not(.uk-preserve-color) .uk-button-secondary, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-secondary, .uk-card-primary.uk-card-body .uk-button-secondary, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary, .uk-card-secondary.uk-card-body .uk-button-secondary, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary, .uk-overlay-primary .uk-button-secondary, .uk-offcanvas-bar .uk-button-secondary {
-background-color: #AD9A00;
+background-color: #7F00FF;
 color: #fff;
 }
 
-.uk-button-primary:hover {
-  background-color: #fff;
-  color: #AD9A00;
-}
-
-.uk-button-primary:active,
-.uk-button-primary.uk-active {
-  background-color: #AD9A00;
-  color: #fff;
-}
-
 .uk-button-primary {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   color: #fff;
   border: 1px solid transparent;
 }
 
 .uk-button-primary:hover {
-  background-color: #000;
+  background-color: #FF0000;
   color: #fff;
 }
 
 .uk-button-primary:active,
 .uk-button-primary.uk-active {
-  background-color: #000;
+  background-color: #FF0000;
   color: #fff;
 }
 
 .uk-button-secondary {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   color: #fff;
 }
 
 .uk-button-secondary:hover {
-  background-color: #000;
+  background-color: #FF0000;
   color: #fff;
 }
 
 .uk-button-secondary:active,
 .uk-button-secondary.uk-active {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   color: #fff;
 }
 
 .uk-button-danger {
   background-color: transparent;
-  color: #AD9A00;
-  border: 1px solid #AD9A00;
+  color: #7F00FF;
+  border: 1px solid #7F00FF;
 }
 
 .uk-button-danger:hover {
@@ -175,21 +164,21 @@ color: #fff;
 .uk-button-danger:active,
 .uk-button-danger.uk-active {
   background-color: transparent;
-  color: #AD9A00;
-  border: 1px solid #AD9A00;
+  color: #7F00FF;
+  border: 1px solid #7F00FF;
 }
 
 .uk-progress::-webkit-progress-value {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   transition: width 0.6s ease;
 }
 .uk-progress::-moz-progress-bar {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   transition: width 0.6s ease;
 }
 
 .uk-section-primary {
-  background: #AD9A00;
+  background: #7F00FF;
 }
 
 .uk-section-secondary {
@@ -197,41 +186,41 @@ color: #fff;
 }
 
 .uk-tile-primary {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
 }
 
 .uk-card-badge {
-  background: #AD9A00;
+  background: #7F00FF;
   color: #fff;
   text-transform: uppercase;
 }
 
 .uk-card-primary {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .uk-card-primary.uk-card-hover:hover {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
 }
 
 .uk-badge {
-  background: #AD9A00;
+  background: #7F00FF;
   color: #fff !important;
   font-size: 11px;
 }
 
 .uk-label {
-  background: #AD9A00;
+  background: #7F00FF;
   color: #fff;
   text-transform: uppercase;
 }
 
 .uk-navbar-nav > li > a {
   padding: 0 0;
-  color: #AD9A00;
+  color: #7F00FF;
   text-transform: uppercase;
   transition: 0.1s ease-in-out;
   transition-property: color, background-color;
@@ -244,11 +233,11 @@ color: #fff;
 }
 
 .uk-navbar-nav > li > a:active {
-  color: #AD9A00;
+  color: #7F00FF;
 }
 
 .uk-navbar-nav > li.uk-active > a {
-  color: #AD9A00;
+  color: #7F00FF;
   text-decoration:overline;
 }
 
@@ -259,20 +248,20 @@ color: #fff;
 
 .uk-tab > .uk-active > a {
   color: #333;
-  border-color: #AD9A00;
+  border-color: #7F00FF;
 }
 
 .uk-background-default {
-  background-color: #fff;
+  background-color: #FF0000;
 }
 .uk-background-muted {
-  background-color: #FFFFFF;
+  background-color: #FF0000;
 }
 .uk-background-primary {
-  background-color: #AD9A00;
+  background-color: #7F00FF;
 }
 .uk-background-secondary {
-  background-color: #000;
+  background-color:#7F00FF;
 }
 
 .uk-tooltip {
@@ -290,7 +279,7 @@ color: #fff;
   max-width: 200px;
   padding: 6px 12px;
   /* 5 */
-  background: #000;
+  background: #FF0000;
   border-radius: 15px;
   color: #fff;
   font-size: 12px;
@@ -344,7 +333,7 @@ color: #fff;
   box-sizing: border-box;
   width: 50px;
   height: 50px;
-  background: #AD9A00;
+  background: #7F00FF;
   color: white;
   border-radius: 100%;
   /* 1 */
@@ -393,3 +382,11 @@ button:active {
 	-o-outline: 0 !important;
 	-webkit-outline: 0 !important;
 }
+
+.uk-button-text {
+        color: #FF0000;
+    }
+
+.uk-button-text:hover {
+        color: #FFFFFF;
+    }
