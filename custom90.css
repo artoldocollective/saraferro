@@ -1,3 +1,34 @@
+/* Import all required fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Lacquer&family=Rubik+Glitch&family=Trade+Winds&display=swap');
+
+/* h1 – Rubik Glitch */
+h1 {
+  font-family: 'Rubik Glitch', cursive !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* h2 – Lacquer */
+h2 {
+  font-family: 'Lacquer', cursive !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* h3 – Jacquard 12 */
+h3 {
+  font-family: 'Jacquard 12', cursive !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+/* All other text elements – Trade Winds */
+body, h4, h5, h6, p, span, li, a, button, input, textarea, label, div {
+  font-family: 'Trade Winds', cursive !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
 
 /* ========================================================================
    Base
@@ -390,3 +421,4 @@ button:active {
 .uk-button-text:hover {
         color: #FFFFFF;
     }
+
