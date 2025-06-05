@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="orange">
+  <title>Gallery Generator</title>
+  <style>
+  body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    color: #000;
+    padding: 30px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    color: #000;
+  }
+
+  input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #000;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  input[type="text"]:focus,
+  input[type="file"]:focus {
+    border-color: orange;
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.4);
+  }
+
+  button {
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background-color: orange;
+    color: #fff;
+    border-color: orange;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: #fff;
+    border: 2px dashed #000;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    min-height: 100px;
+  }
+
+  .gallery-item {
+    width: 140px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 2px orange;
+  }
+
+  .gallery-item.drag-over {
+    box-shadow: 0 0 0 2px orange;
+  }
+
+  .gallery-item img {
+    max-width: 120px;
+    max-height: 100px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    cursor: grab;
+  }
+
+  .gallery-item.dragging img,
+  .gallery-item img:active {
+    cursor: grabbing;
+  }
+
+  .caption-input {
+    width: 100%;
+    padding: 6px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    outline: none;
+  }
+
+  .caption-input:focus {
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.4);
+  }
+
+  .drag-over {
+    border: 2px dashed orange;
+    background-color: #fff7e6;
+  }
+  </style>
+</head>
+<body>
+
+<h1>Gallery Generator</h1>
+<label>Title</label>
+<input type="text" id="h1" placeholder="e. g. Sara Ferro">
+
+<label>Subtitle</label>
+<input type="text" id="h3" placeholder="e. g. Album name">
+
+<label>Select Images:</label>
+<input type="file" id="images" multiple accept="image/*">
+
+<div class="gallery" id="gallery"></div>
+
+<button onclick="saveGallery()">Save Gallery</button>
+
+<template id="gallery-template">
+
+<div class="uk-height-viewport uk-padding">
+ <div class="uk-text-center">
+
+<div class="uk-container uk-padding-small">
+  <h1 class="uk-heading-line uk-text-center"><a href="https://ferrosara.github.io" target="_blank"><span>{{title}}</span></a></h1>
+  <h3 class="uk-text-lighter">{{folder}}</h3>
+</div>
+
+<div class="uk-flex uk-flex-center">
+ <div uk-lightbox>
+ <div uk-slider="sets: false; autoplay: true" tabindex="-1">
+  <div class="uk-position-relative uk-visible-toggle uk-light">
+   <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid uk-flex uk-flex-middle uk-padding-large">
+   {{images}}
+   </div>
+  </div>
+ </div>
+ </div>
+</div>
+
+  </div>
+</div>
+
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+const gallery = document.getElementById('gallery');
+const loadedFiles = [];
+
+document.getElementById('images').addEventListener('change', function () {
+  gallery.innerHTML = '';
+  loadedFiles.length = 0;
+
+  Array.from(this.files).forEach((file, index) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const item = createGalleryItem(e.target.result, file.name);
+      gallery.appendChild(item);
+      loadedFiles.push({ file, src: e.target.result });
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+function createGalleryItem(src, filename) {
+  const item = document.createElement('div');
+  item.className = 'gallery-item';
+  item.setAttribute('draggable', 'true');
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.dataset.filename = filename;
+
+  const input = document.createElement('input');
+  input.className = 'caption-input';
+  input.placeholder = 'Caption (optional)';
+
+  item.appendChild(img);
+  item.appendChild(input);
+
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', null);
+    item.classList.add('dragging');
+    item.dragIndex = [...gallery.children].indexOf(item);
+  });
+
+  item.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    item.classList.add('drag-over');
+  });
+
+  item.addEventListener('dragleave', () => {
+    item.classList.remove('drag-over');
+  });
+
+  item.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const dragged = document.querySelector('.dragging');
+    if (dragged && dragged !== item) {
+      const from = dragged.dragIndex;
+      const to = [...gallery.children].indexOf(item);
+      if (from < to) {
+        gallery.insertBefore(dragged, item.nextSibling);
+      } else {
+        gallery.insertBefore(dragged, item);
+      }
+    }
+    item.classList.remove('drag-over');
+  });
+
+  item.addEventListener('dragend', () => {
+    document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+  });
+
+  return item;
+}
+
+function escapeHtml(text) {
+  return text.replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[m]);
+}
+
+</script>
+
+<script>
+async function saveGallery() {
+  const h1Raw = document.getElementById('h1').value.trim() || 'Gallery';
+  const h3Raw = document.getElementById('h3').value.trim() || 'gallery';
+
+  const sanitize = text =>
+    text.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '');
+
+  const h1 = sanitize(h1Raw);
+  const h3 = sanitize(h3Raw);
+
+  const template = document.getElementById('gallery-template').innerHTML;
+
+  const items = [...gallery.querySelectorAll('.gallery-item')];
+  const zip = new JSZip();
+  const mediaFolder = zip.folder('media');
+
+  let htmlImages = '';
+  for (let i = 0; i < items.length; i++) {
+    const img = items[i].querySelector('img');
+    const captionInput = items[i].querySelector('input');
+    let caption = captionInput.value.trim();
+
+    if (!caption) caption = `${h1Raw} - ${h3Raw}`;
+    captionInput.value = caption;
+
+    const imgFilename = img.dataset.filename;
+    const fileObj = loadedFiles.find(f => f.file.name === imgFilename);
+    if (!fileObj) continue;
+
+    const originalFile = fileObj.file;
+    const extension = originalFile.name.split('.').pop();
+    const filename = `${h1}-${h3}-${i + 1}.${extension}`;
+
+    mediaFolder.file(filename, originalFile);
+
+    htmlImages += `<div><a class="hover-scale" href="media/${filename}" data-caption="${escapeHtml(caption)}"><img class="uk-border-rounded" src="media/${filename}" alt="${escapeHtml(h1Raw)} - ${escapeHtml(h3Raw)}"></a></div>\n`;
+  }
+
+  const html = `
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(h1Raw)} - foto - ${escapeHtml(h3Raw)}</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="">
+  <meta name="keywords" content="Sara Ferro, foto, regista, cineasta, artista, scrittrice">
+  <meta name="author" content="Sara Ferro">
+  <!-- Favicon -->
+  <link rel="icon" href="https://ferrosara.github.io/images/icon.jpg" type="image/jpeg">
+  <link rel="stylesheet" type="text/css" href="https://ferrosara.github.io/css/uikit.css" />
+  <link rel="stylesheet" type="text/css" href="https://ferrosara.github.io/custom.css" />
+  <script src="https://ferrosara.github.io/js/uikit.js"><\/script>
+  <script src="https://ferrosara.github.io/js/uikit-icons.js"><\/script>
+  <script>
+            UIkit.mixin({
+                data: {
+                    delayControls: 86400000
+                }
+            }, 'lightbox');
+  <\/script>
+  <style>
+            .hover-scale img {
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .hover-scale:hover img {
+                transform: scale(1.1);
+            }
+ </style>
+</head>
+<body>
+  ${template
+    .replace(/\{\{title\}\}/g, escapeHtml(h1Raw))
+    .replace(/\{\{folder\}\}/g, escapeHtml(h3Raw))
+    .replace(/\{\{images\}\}/g, htmlImages.trim())}
+</body>
+</html>
+`.trim();
+
+  zip.file(`index.html`, html);
+  zip.generateAsync({ type: 'blob' }).then(content => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(content);
+    a.download = `${h3}.zip`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+}
+</script>
+
+
+
+</body>
+</html>
