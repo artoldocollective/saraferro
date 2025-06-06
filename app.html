@@ -1,4 +1,4 @@
-<!-- Version: 1.0.3 | Date: 2025-06-06 | Author: Sacrisoft -->
+<!-- Version: 1.0.4 | Date: 2025-06-06 | Author: Sacrisoft -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,10 +109,12 @@
     cursor: grab;
   }
 
-  .gallery-item.dragging img,
-  .gallery-item img:active {
-    cursor: grabbing;
-  }
+.gallery-item {
+  cursor: grab;
+}
+.gallery-item.dragging {
+  cursor: grabbing;
+}
 
   .caption-input {
     width: 100%;
@@ -219,6 +221,8 @@
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script>
 const gallery = document.getElementById('gallery');
+gallery.addEventListener('dragover', e => e.preventDefault());
+gallery.addEventListener('drop', e => e.preventDefault());
 const loadedFiles = [];
 
 document.getElementById('images').addEventListener('change', function () {
@@ -253,6 +257,7 @@ function createGalleryItem(src, file) {
   const img = document.createElement('img');
   img.src = src;
   img.dataset.id = uniqueId;
+  img.draggable = false;
 
   const input = document.createElement('input');
   input.className = 'caption-input';
@@ -273,11 +278,17 @@ function createGalleryItem(src, file) {
 
   loadedFiles.push({ id: uniqueId, file, src });
 
-  // Drag-and-drop handlers
+  // DRAG & DROP
+
   item.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text/plain', null);
     item.classList.add('dragging');
-    item.dragIndex = [...gallery.children].indexOf(item);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', 'drag'); // Required for Safari
+  });
+
+  item.addEventListener('dragend', () => {
+    item.classList.remove('dragging');
+    document.querySelectorAll('.gallery-item').forEach(el => el.classList.remove('drag-over'));
   });
 
   item.addEventListener('dragover', (e) => {
@@ -293,19 +304,15 @@ function createGalleryItem(src, file) {
     e.preventDefault();
     const dragged = document.querySelector('.dragging');
     if (dragged && dragged !== item) {
-      const from = dragged.dragIndex;
-      const to = [...gallery.children].indexOf(item);
-      if (from < to) {
+      const fromIndex = [...gallery.children].indexOf(dragged);
+      const toIndex = [...gallery.children].indexOf(item);
+      if (fromIndex < toIndex) {
         gallery.insertBefore(dragged, item.nextSibling);
       } else {
         gallery.insertBefore(dragged, item);
       }
     }
     item.classList.remove('drag-over');
-  });
-
-  item.addEventListener('dragend', () => {
-    document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
   });
 
   return item;
@@ -421,8 +428,6 @@ async function saveGallery() {
   });
 }
 </script>
-
-
 
 </body>
 </html>
