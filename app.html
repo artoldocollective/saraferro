@@ -1,3 +1,5 @@
+<!-- Version: 1.0.3 | Date: 2025-06-06 | Author: Sacrisoft -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,6 +134,39 @@
     border: 2px dashed orange;
     background-color: #fff7e6;
   }
+
+  .gallery-item {
+  position: relative; /* Needed for absolute positioning of the delete button */
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Optional tweak for better alignment */
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+.delete-btn:hover {
+  background: #000;
+}
+
   </style>
 </head>
 <body>
@@ -187,36 +222,58 @@ const gallery = document.getElementById('gallery');
 const loadedFiles = [];
 
 document.getElementById('images').addEventListener('change', function () {
-  gallery.innerHTML = '';
-  loadedFiles.length = 0;
+  Array.from(this.files).forEach((file) => {
+    // Check if file already loaded by name and size to avoid duplicates
+    const exists = loadedFiles.some(f => f.file.name === file.name && f.file.size === file.size);
+    if (exists) {
+      console.log(`Skipping duplicate file: ${file.name}`);
+      return; // Skip this file, don't add duplicate
+    }
 
-  Array.from(this.files).forEach((file, index) => {
     const reader = new FileReader();
     reader.onload = e => {
-      const item = createGalleryItem(e.target.result, file.name);
+      const src = e.target.result;
+      const item = createGalleryItem(src, file);
       gallery.appendChild(item);
-      loadedFiles.push({ file, src: e.target.result });
     };
     reader.readAsDataURL(file);
   });
+
+  // Clear input so the same files can be re-selected later
+  this.value = '';
 });
 
-function createGalleryItem(src, filename) {
+function createGalleryItem(src, file) {
   const item = document.createElement('div');
   item.className = 'gallery-item';
   item.setAttribute('draggable', 'true');
 
+  const uniqueId = crypto.randomUUID();
+
   const img = document.createElement('img');
   img.src = src;
-  img.dataset.filename = filename;
+  img.dataset.id = uniqueId;
 
   const input = document.createElement('input');
   input.className = 'caption-input';
   input.placeholder = 'Caption (optional)';
 
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.innerHTML = '×';
+  deleteBtn.addEventListener('click', () => {
+    item.remove();
+    const index = loadedFiles.findIndex(f => f.id === uniqueId);
+    if (index !== -1) loadedFiles.splice(index, 1);
+  });
+
+  item.appendChild(deleteBtn);
   item.appendChild(img);
   item.appendChild(input);
 
+  loadedFiles.push({ id: uniqueId, file, src });
+
+  // Drag-and-drop handlers
   item.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', null);
     item.classList.add('dragging');
@@ -288,8 +345,8 @@ async function saveGallery() {
     if (!caption) caption = `${h1Raw} - ${h3Raw}`;
     captionInput.value = caption;
 
-    const imgFilename = img.dataset.filename;
-    const fileObj = loadedFiles.find(f => f.file.name === imgFilename);
+    const imgId = img.dataset.id;
+    const fileObj = loadedFiles.find(f => f.id === imgId);
     if (!fileObj) continue;
 
     const originalFile = fileObj.file;
