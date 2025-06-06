@@ -1,225 +1,206 @@
-
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sara Ferro - Foto - Genova</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Foto di Sara Ferro">
-    <meta name="keywords" content="Sara Ferro, foto, regista, cineasta, artista, scrittrice">
-    <meta name="author" content="Sara Ferro">
-    <!-- Favicon -->
-    <link rel="icon" href="https://ferrosara.github.io/images/icon.jpg" type="image">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="./css/uikit.css" />
-    <link rel="stylesheet" type="text/css" href="./custom.css" />
-    <script src="./js/uikit.js"></script>
-    <script src="./js/uikit-icons.js"></script>
-    <script>
-        UIkit.mixin({
-            data: {
-                delayControls: 86400000
-            }
-        }, 'lightbox');
-    </script>
-    <style>
-        .hover-scale img {
-            transition: transform 0.3s ease-in-out;
-        }
-        .hover-scale:hover img {
-            transform: scale(1.1);
-        }
-    </style>
-</head>
-<body>
-    <div class="uk-height-viewport uk-padding">
-        <div class="uk-text-center">
-            <h1 class="uk-heading-line uk-text-center">
-                <a href="./index.html" target="_blank">Sara Ferro</a>
-            </h1>
-            <h3 class="uk-text-lighter uk-padding-large uk-padding-remove-top">Genova d'autunno arancione</h3>
-        </div>
-        <div class="uk-flex uk-flex-center uk-overflow-hidden">
-            <div uk-lightbox>
-                <div uk-slider="sets: false; autoplay: true" tabindex="-1">
-                    <div class="uk-position-relative uk-visible-toggle uk-light">
-                        <div class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-3@m uk-grid uk-flex uk-flex-middle">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sara Ferro - Foto - Genova</title>
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Foto di Sara Ferro">
+        <meta name="keywords" content="Sara Ferro, foto, regista, cineasta, artista, scrittrice">
+        <meta name="author" content="Sara Ferro">
+        <!-- Favicon -->
+        <link rel="icon" href="https://ferrosara.github.io/images/icon.jpg" type="image">
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="./css/uikit.css" />
+        <link rel="stylesheet" type="text/css" href="./custom.css" />
+        <script src="./js/uikit.js"></script>
+        <script src="./js/uikit-icons.js"></script>
+        <script>
+            UIkit.mixin({
+                data: {
+                    delayControls: 86400000
+                }
+            }, 'lightbox');
+        </script>
+        <style>
+                .hover-scale {
+        padding: 8px; /* adjust spacing between items */
+        overflow: hidden; /* clip the zoomed image */
+    }
 
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-1.webp" data-caption="Sara Ferro № 1">
-                                    <img src="./images/sara-ferro-orange-edition-1.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
+    .hover-scale img {
+        transition: transform 0.3s ease-in-out;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .hover-scale:hover img {
+        transform: scale(1.1);
+    }
+
+        </style>
+    </head>
+    <body>
+        <div class="uk-height-viewport uk-padding">
+            <div class="uk-text-center">
+                <h1 class="uk-heading-line uk-text-center">
+                    <a href="./index.html" target="_blank">Sara Ferro</a>
+                </h1>
+                <h3 class="uk-text-lighter">Genova d'autunno arancione</h3>
+            </div>
+            <div class="uk-flex uk-flex-center">
+                <div uk-lightbox>
+                    <div uk-slider="sets: false; autoplay: true" tabindex="-1">
+                        <div class="uk-position-relative uk-visible-toggle uk-light">
+                            <div class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-small uk-grid-large@m uk-grid uk-flex uk-flex-middle">
+                                <!-- Lightbox images -->
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-1.webp" data-caption="Sara Ferro № 1">
+                                        <img src="./images/sara-ferro-orange-edition-1.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-2.webp" data-caption="Sara Ferro № 2">
+                                        <img src="./images/sara-ferro-orange-edition-2.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-3.webp" data-caption="Sara Ferro № 3">
+                                        <img src="./images/sara-ferro-orange-edition-3.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-4.webp" data-caption="Sara Ferro № 4">
+                                        <img src="./images/sara-ferro-orange-edition-4.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-5.webp" data-caption="Sara Ferro № 5">
+                                        <img src="./images/sara-ferro-orange-edition-5.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-6.webp" data-caption="Sara Ferro № 6">
+                                        <img src="./images/sara-ferro-orange-edition-6.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-7.webp" data-caption="Sara Ferro № 7">
+                                        <img src="./images/sara-ferro-orange-edition-7.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-8.webp" data-caption="Sara Ferro № 8">
+                                        <img src="./images/sara-ferro-orange-edition-8.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-9.webp" data-caption="Sara Ferro № 9">
+                                        <img src="./images/sara-ferro-orange-edition-9.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-10.webp" data-caption="Sara Ferro № 10">
+                                        <img src="./images/sara-ferro-orange-edition-10.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-11.webp" data-caption="Sara Ferro № 11">
+                                        <img src="./images/sara-ferro-orange-edition-11.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-12.webp" data-caption="Sara Ferro № 12">
+                                        <img src="./images/sara-ferro-orange-edition-12.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-13.webp" data-caption="Sara Ferro № 13">
+                                        <img src="./images/sara-ferro-orange-edition-13.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-14.webp" data-caption="Sara Ferro № 14">
+                                        <img src="./images/sara-ferro-orange-edition-14.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-15.webp" data-caption="Sara Ferro № 15">
+                                        <img src="./images/sara-ferro-orange-edition-15.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-16.webp" data-caption="Sara Ferro № 16">
+                                        <img src="./images/sara-ferro-orange-edition-16.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-17.webp" data-caption="Sara Ferro № 17">
+                                        <img src="./images/sara-ferro-orange-edition-17.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-18.webp" data-caption="Sara Ferro № 18">
+                                        <img src="./images/sara-ferro-orange-edition-18.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-19.webp" data-caption="Sara Ferro № 19">
+                                        <img src="./images/sara-ferro-orange-edition-19.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-20.webp" data-caption="Sara Ferro № 20">
+                                        <img src="./images/sara-ferro-orange-edition-20.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-21.webp" data-caption="Sara Ferro № 21">
+                                        <img src="./images/sara-ferro-orange-edition-21.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-22.webp" data-caption="Sara Ferro № 22">
+                                        <img src="./images/sara-ferro-orange-edition-22.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-23.webp" data-caption="Sara Ferro № 23">
+                                        <img src="./images/sara-ferro-orange-edition-23.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-24.webp" data-caption="Sara Ferro № 24">
+                                        <img src="./images/sara-ferro-orange-edition-24.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-25.webp" data-caption="Sara Ferro № 25">
+                                        <img src="./images/sara-ferro-orange-edition-25.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-26.webp" data-caption="Sara Ferro № 26">
+                                        <img src="./images/sara-ferro-orange-edition-26.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-27.webp" data-caption="Sara Ferro № 27">
+                                        <img src="./images/sara-ferro-orange-edition-27.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
+                                <div class="hover-scale">
+                                    <a href="./images/sara-ferro-orange-edition-28.webp" data-caption="Sara Ferro № 28">
+                                        <img src="./images/sara-ferro-orange-edition-28.webp" width="600" height="400" alt="Sara Ferro Genova" class="uk-border-rounded">
+                                    </a>
+                                </div>
                             </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-2.webp" data-caption="Sara Ferro № 2">
-                                    <img src="./images/sara-ferro-orange-edition-2.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-3.webp" data-caption="Sara Ferro № 3">
-                                    <img src="./images/sara-ferro-orange-edition-3.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-4.webp" data-caption="Sara Ferro № 4">
-                                    <img src="./images/sara-ferro-orange-edition-4.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-5.webp" data-caption="Sara Ferro № 5">
-                                    <img src="./images/sara-ferro-orange-edition-5.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-6.webp" data-caption="Sara Ferro № 6">
-                                    <img src="./images/sara-ferro-orange-edition-6.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-7.webp" data-caption="Sara Ferro № 7">
-                                    <img src="./images/sara-ferro-orange-edition-7.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-8.webp" data-caption="Sara Ferro № 8">
-                                    <img src="./images/sara-ferro-orange-edition-8.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-9.webp" data-caption="Sara Ferro № 9">
-                                    <img src="./images/sara-ferro-orange-edition-9.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-10.webp" data-caption="Sara Ferro № 10">
-                                    <img src="./images/sara-ferro-orange-edition-10.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-11.webp" data-caption="Sara Ferro № 11">
-                                    <img src="./images/sara-ferro-orange-edition-11.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-12.webp" data-caption="Sara Ferro № 12">
-                                    <img src="./images/sara-ferro-orange-edition-12.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-13.webp" data-caption="Sara Ferro № 13">
-                                    <img src="./images/sara-ferro-orange-edition-13.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-14.webp" data-caption="Sara Ferro № 14">
-                                    <img src="./images/sara-ferro-orange-edition-14.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-15.webp" data-caption="Sara Ferro № 15">
-                                    <img src="./images/sara-ferro-orange-edition-15.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-16.webp" data-caption="Sara Ferro № 16">
-                                    <img src="./images/sara-ferro-orange-edition-16.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-17.webp" data-caption="Sara Ferro № 17">
-                                    <img src="./images/sara-ferro-orange-edition-17.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-18.webp" data-caption="Sara Ferro № 18">
-                                    <img src="./images/sara-ferro-orange-edition-18.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-19.webp" data-caption="Sara Ferro № 19">
-                                    <img src="./images/sara-ferro-orange-edition-19.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-20.webp" data-caption="Sara Ferro № 20">
-                                    <img src="./images/sara-ferro-orange-edition-20.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-21.webp" data-caption="Sara Ferro № 21">
-                                    <img src="./images/sara-ferro-orange-edition-21.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-22.webp" data-caption="Sara Ferro № 22">
-                                    <img src="./images/sara-ferro-orange-edition-22.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-23.webp" data-caption="Sara Ferro № 23">
-                                    <img src="./images/sara-ferro-orange-edition-23.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-24.webp" data-caption="Sara Ferro № 24">
-                                    <img src="./images/sara-ferro-orange-edition-24.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-25.webp" data-caption="Sara Ferro № 25">
-                                    <img src="./images/sara-ferro-orange-edition-25.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-26.webp" data-caption="Sara Ferro № 26">
-                                    <img src="./images/sara-ferro-orange-edition-26.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-27.webp" data-caption="Sara Ferro № 27">
-                                    <img src="./images/sara-ferro-orange-edition-27.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
-                            <div class="hover-scale">
-                                <a href="./images/sara-ferro-orange-edition-28.webp" data-caption="Sara Ferro № 28">
-                                    <img src="./images/sara-ferro-orange-edition-28.webp" alt="Sara Ferro Genova" class="uk-border-rounded uk-responsive-width">
-                                </a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
