@@ -1,4 +1,4 @@
-<!-- Version: 1.0.4 | Date: 2025-06-06 | Author: Sacrisoft -->
+<!-- Version: 1.0.5 | Date: 2025-06-06 | Author: Sacrisoft -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -287,6 +287,11 @@ function createGalleryItem(src, file) {
   });
 
   item.addEventListener('dragend', () => {
+  item.classList.remove('dragging');
+  document.querySelectorAll('.gallery-item').forEach(el => el.classList.remove('drag-over'));
+  });
+
+  item.addEventListener('dragend', () => {
     item.classList.remove('dragging');
     document.querySelectorAll('.gallery-item').forEach(el => el.classList.remove('drag-over'));
   });
@@ -427,6 +432,51 @@ async function saveGallery() {
     URL.revokeObjectURL(a.href);
   });
 }
+</script>
+
+
+<div id="fullscreenPreview" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000d; justify-content:center; align-items:center; z-index:1000;">
+  <div style="text-align:center; color:white;">
+    <img id="previewImage" src="" style="max-width:90vw; max-height:80vh; border-radius:10px;" alt="Preview">
+    <div id="previewFilename" style="margin-top:10px; font-size:1.2rem;"></div>
+  </div>
+</div>
+
+<script>
+let selectedGalleryItem = null;
+
+gallery.addEventListener('click', (e) => {
+  const item = e.target.closest('.gallery-item');
+  if (item) {
+    document.querySelectorAll('.gallery-item').forEach(el => el.classList.remove('selected'));
+    item.classList.add('selected');
+    selectedGalleryItem = item;
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space' && selectedGalleryItem) {
+    e.preventDefault(); // Prevent scrolling
+    const img = selectedGalleryItem.querySelector('img');
+    const fileObj = loadedFiles.find(f => f.id === img.dataset.id);
+    if (!fileObj) return;
+
+    document.getElementById('previewImage').src = fileObj.src;
+    document.getElementById('previewFilename').textContent = fileObj.file.name;
+
+    document.getElementById('fullscreenPreview').style.display = 'flex';
+  }
+
+  // Close on ESC
+  if (e.key === 'Escape') {
+    document.getElementById('fullscreenPreview').style.display = 'none';
+  }
+});
+
+// Allow click to close preview
+document.getElementById('fullscreenPreview').addEventListener('click', () => {
+  document.getElementById('fullscreenPreview').style.display = 'none';
+});
 </script>
 
 </body>
