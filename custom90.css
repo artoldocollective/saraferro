@@ -97,7 +97,7 @@ a.uk-link-heading:hover,
 }
 
 .uk-icon-button:hover {
-  background-color: #FF0000;
+  background-color: #ffa500;
   color: #fff;
 }
 
@@ -154,13 +154,13 @@ color: #fff;
 }
 
 .uk-button-primary:hover {
-  background-color: #FF0000;
+  background-color: #ffa500;
   color: #fff;
 }
 
 .uk-button-primary:active,
 .uk-button-primary.uk-active {
-  background-color: #FF0000;
+  background-color: #ffa500;
   color: #fff;
 }
 
@@ -170,7 +170,7 @@ color: #fff;
 }
 
 .uk-button-secondary:hover {
-  background-color: #FF0000;
+  background-color: #ffa500;
   color: #fff;
 }
 
@@ -213,7 +213,7 @@ color: #fff;
 }
 
 .uk-section-secondary {
-  background: #000;
+  background: #ffa500;
 }
 
 .uk-tile-primary {
@@ -283,10 +283,10 @@ color: #fff;
 }
 
 .uk-background-default {
-  background-color: #FF0000;
+  background-color: #ffa500;
 }
 .uk-background-muted {
-  background-color: #FF0000;
+  background-color: #ffa500;
 }
 .uk-background-primary {
   background-color: #7F00FF;
@@ -310,7 +310,7 @@ color: #fff;
   max-width: 200px;
   padding: 6px 12px;
   /* 5 */
-  background: #FF0000;
+  background: #7F00FF;
   border-radius: 15px;
   color: #fff;
   font-size: 12px;
@@ -415,7 +415,7 @@ button:active {
 }
 
 .uk-button-text {
-        color: #FF0000;
+        color: #ffa500;
     }
 
 .uk-button-text:hover {
