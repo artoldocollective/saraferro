@@ -1,4 +1,4 @@
-<!-- Version: 1.0.5 | Date: 2025-06-06 | Author: Sacrisoft -->
+<!-- Version: 1.0.6 | Last Update: 2025-06-09 | Author: Sacrisoft | © All rights reserved -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -169,6 +169,61 @@
   background: #f44336;
 }
 
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #000;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: orange;
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
   </style>
 </head>
 <body>
@@ -184,6 +239,14 @@
 <input type="file" id="images" multiple accept="image/*">
 
 <div class="gallery" id="gallery"></div>
+
+<label class="switch-label">
+  <label class="switch">
+    <input type="checkbox" id="privateToggle">
+    <span class="slider round"></span>
+  </label>
+  <span>Invisible Gallery</span>
+</label>
 
 <button onclick="saveGallery()">Save Gallery</button>
 
@@ -370,12 +433,17 @@ async function saveGallery() {
     htmlImages += `<div><a class="hover-scale" href="media/${filename}" data-caption="${escapeHtml(caption)}"><img class="uk-border-rounded" src="media/${filename}" alt="${escapeHtml(h1Raw)} - ${escapeHtml(h3Raw)}"></a></div>\n`;
   }
 
-  const html = `
+const isPrivate = document.getElementById('privateToggle').checked;
+const robotsMeta = isPrivate
+  ? '<meta name="robots" content="noindex, nofollow">'
+  : '<meta name="robots" content="index, follow">';
+
+const html = `
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="robots" content="index, follow">
+  ${robotsMeta}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(h1Raw)} - foto - ${escapeHtml(h3Raw)}</title>
   <!-- SEO Meta Tags -->
