@@ -1,23 +1,23 @@
 /* Import all required fonts */
-@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Lacquer&family=Rubik+Glitch&family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Lacquer&family=Rock+Salt&family=Trade+Winds&display=swap');
 
-/* h1 – Rubik Glitch */
+/* h1 – Rock Salt */
 h1 {
-  font-family: 'Rubik Glitch', cursive !important;
-  font-weight: normal !important;
-  font-style: normal !important;
+  font-family: 'Rock Salt', cursive !important;
+  font-weight: bold !important;
+  font-style: normal !important; /* or 'italic' if you want it slanted */
 }
 
-/* h2 – Lacquer */
+/* h2 – Jacquard 12 */
 h2 {
-  font-family: 'Lacquer', cursive !important;
+  font-family: 'Jacquard 12', cursive !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
 
-/* h3 – Jacquard 12 */
+/* h3 – Lacquer */
 h3 {
-  font-family: 'Jacquard 12', cursive !important;
+  font-family: 'Lacquer', cursive !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
