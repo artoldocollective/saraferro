@@ -256,7 +256,7 @@
 
 <p class="uk-text-justify uk-dropcap uk-text-lighter uk-text-large" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
 
-Sara <i>Wundersaar</i> Ferro (*1977), MA Sociology in Media,
+Sara <i>Wundersaar</i> Ferro (*1977), (alias Sara Ferro W.), MA Sociology in Media,
 
 was born in Milan at the end of a turbulent decade. Secrecy of the world she sensed made her character secrete, underflows she detected let her opt for underground life, she acts as she would be undercover, yet she cannot seriously pass unnoticed. 
 
@@ -352,6 +352,44 @@ Inspirations come from the counterculture, pop occulture, psychedelic rock, cult
     <div>
         <img class="uk-margin-large uk-border-rounded" uk-scrollspy="cls: uk-animation-slide-left; repeat: true" src="./images/sara-ferro-85.jpeg" width="1800" height="1200" alt="Sara Ferro">
     </div>
+
+<script>
+fetch("https://ferrosara.github.io/media/galleries.json")
+  .then(response => response.json())
+  .then(galleries => {
+    const container = document.querySelector("[uk-grid]");
+
+    galleries.forEach(entry => {
+      const galleryURL = `https://ferrosara.github.io/media/${entry.folder}/index.html`;
+      const imageURL = `https://ferrosara.github.io/${entry.image}`;
+
+      // Build <a> with <img> inside
+      const link = document.createElement("a");
+      link.href = galleryURL;
+
+      const img = document.createElement("img");
+      img.src = imageURL;
+      img.alt = "Sara Ferro";
+      img.width = 1800;
+      img.height = 1200;
+      img.className = "uk-margin-large uk-border-rounded";
+      img.setAttribute("uk-scrollspy", "cls: uk-animation-slide-left; repeat: true");
+
+      link.appendChild(img);
+
+      // Build <div uk-lightbox> wrapper
+      const wrapper = document.createElement("div");
+      wrapper.setAttribute("uk-lightbox", "");
+      wrapper.appendChild(link);
+
+      // Append <div> into the existing UIkit grid
+      container.appendChild(wrapper);
+    });
+  })
+  .catch(err => {
+    console.error("Failed to load galleries.json", err);
+  });
+</script>
 
 </div>
 
