@@ -8,22 +8,22 @@ h1 {
   font-style: normal !important; /* or 'italic' if you want it slanted */
 }
 
-/* h2 – Jacquard 12 */
+/* h2 – Lacquer */
 h2 {
-  font-family: 'Jacquard 12', cursive !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-
-/* h3 – Lacquer */
-h3 {
   font-family: 'Lacquer', cursive !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
 
+/* h3 – Jacquard 12 */
+h3 {
+  font-family: 'Jacquard 12', cursive !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
 /* All other text elements – Trade Winds */
-body, h4, h5, h6, p, span, li, a, button, input, textarea, label, div {
+bo h4, h5, h6, p, span, li, a, button, input, textarea, label, div {
   font-family: 'Trade Winds', cursive !important;
   font-weight: normal !important;
   font-style: normal !important;
