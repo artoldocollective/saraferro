@@ -407,9 +407,8 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
   }
 
   const mergePoints = [];
-
   function addMergePoint(x, y){
-    mergePoints.push({x, y, radius:0, life:30}); // life controls fade-out
+    mergePoints.push({x, y, radius:0, life:30}); // same as desktop, not crazy
   }
 
   // Mouse
@@ -422,7 +421,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     for(let i=0;i<floating.length;i++){
       const f=floating[i];
 
-      // Merge/twirl effect
+      // Merge/twirl effect, subtle like desktop
       mergePoints.forEach(mp => {
         const dx = mp.x - f.x;
         const dy = mp.y - f.y;
