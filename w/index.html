@@ -395,8 +395,8 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     floating.push({
       x:Math.random()*canvas.width,
       y:Math.random()*canvas.height,
-      vx:(Math.random()-0.5)*0.15,
-      vy:0.2+Math.random()*0.4,
+      vx:(Math.random()-0.5)*0.132, // 10% faster than 0.12
+      vy:0.198+Math.random()*0.418,  // 10% faster than 0.18+0.38
       size:12+Math.random()*48,
       word:words[Math.floor(Math.random()*words.length)],
       color:'#fff',
@@ -412,15 +412,15 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
   function drawFloating(t){
     for(let i=0;i<floating.length;i++){
       const f=floating[i];
-      f.x += f.vx + Math.sin(t/800 + f.phase)*0.05;
-      f.y += f.vy + Math.cos(t/700 + f.phase)*0.05;
+      f.x += f.vx + Math.sin(t/900 + f.phase)*0.0605; // 10% faster oscillation
+      f.y += f.vy + Math.cos(t/800 + f.phase)*0.0605;
       if(f.x>canvas.width) f.x=0;
       if(f.y>canvas.height) f.y=0;
       if(mouse.x!==null){
         const dx=mouse.x-f.x, dy=mouse.y-f.y, d2=dx*dx+dy*dy;
-        if(d2<40000){f.vx+=dx*0.001; f.vy+=dy*0.001;}
+        if(d2<40000){f.vx+=dx*0.00132; f.vy+=dy*0.00132;} // 10% stronger mouse attraction
       }
-      f.alpha = 0.1 + 0.5*Math.abs(Math.sin(t/600 + f.phase));
+      f.alpha = 0.12 + 0.5*Math.abs(Math.sin(t/650 + f.phase));
       ctx.save();
       ctx.globalAlpha=f.alpha;
       ctx.font=`${f.size}px monospace`;
@@ -439,7 +439,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     if(Math.random()<0.005){
       const f=floating[Math.floor(Math.random()*floating.length)];
       ctx.save();
-      ctx.globalAlpha=0.3+Math.random()*0.2;
+      ctx.globalAlpha=0.32+Math.random()*0.18;
       ctx.font='700 72px monospace';
       ctx.textAlign='center';
       ctx.fillStyle='#ff5555';
