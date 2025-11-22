@@ -364,7 +364,7 @@ border-radius: 25px;
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#000000;">
 <iframe srcdoc="<style>
-html,body{margin:0;padding:0;background:#000;overflow:hidden;}
+html,body{margin:0;padding:0;background:#000;overflow:hidden;touch-action:none;}
 #bgCanvas{position:fixed;inset:0;z-index:-10;pointer-events:none;}
 #bgCanvas canvas{position:fixed;top:0;left:0;width:100%;height:100%;display:block;filter:blur(0.6px) contrast(1.05);}
 body{color:#fff;}
@@ -390,7 +390,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
   let time=0;
   const words=[&quot;amore&quot;,&quot;luna&quot;,&quot;sogno&quot;,&quot;verso&quot;,&quot;vento&quot;,&quot;eco&quot;,&quot;silenzio&quot;,&quot;cuore&quot;,&quot;poesia&quot;,&quot;notte&quot;,&quot;stelle&quot;,&quot;fiamma&quot;,&quot;memoria&quot;,&quot;rima&quot;,&quot;incanto&quot;,&quot;ambra&quot;,&quot;onde&quot;,&quot;filo&quot;,&quot;aria&quot;,&quot;ombra&quot;];
 
-  const density = window.innerWidth < 768 ? 90 : 180; // fewer words on mobile
+  const density = window.innerWidth < 768 ? 90 : 180;
   const floating=[];
   for(let i=0;i<density;i++){
     floating.push({
@@ -406,26 +406,42 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     });
   }
 
-  const mouse={x:null,y:null};
+  const mergePoints = [];
+
+  function addMergePoint(x, y){
+    mergePoints.push({x, y, radius:0, life:30}); // life controls fade-out
+  }
+
   // Mouse
-  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+  window.addEventListener('mousemove', e => { addMergePoint(e.clientX, e.clientY); });
   // Touch
-  window.addEventListener('touchstart', e => { if(e.touches.length>0){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
-  window.addEventListener('touchmove', e => { if(e.touches.length>0){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
-  window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); const t = e.touches[0]; addMergePoint(t.clientX, t.clientY); });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); const t = e.touches[0]; addMergePoint(t.clientX, t.clientY); });
 
   function drawFloating(t){
     for(let i=0;i<floating.length;i++){
       const f=floating[i];
+
+      // Merge/twirl effect
+      mergePoints.forEach(mp => {
+        const dx = mp.x - f.x;
+        const dy = mp.y - f.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 150){
+          const angle = Math.atan2(dy, dx);
+          f.vx += Math.cos(angle)*0.02;
+          f.vy += Math.sin(angle)*0.02;
+        }
+      });
+
       f.x += f.vx + Math.sin(t/850 + f.phase)*0.075;
       f.y += f.vy + Math.cos(t/750 + f.phase)*0.075;
+
       if(f.x>canvas.width) f.x=0;
       if(f.y>canvas.height) f.y=0;
-      if(mouse.x!==null){
-        const dx=mouse.x-f.x, dy=mouse.y-f.y, d2=dx*dx+dy*dy;
-        if(d2<40000){f.vx+=dx*0.0015; f.vy+=dy*0.0015;}
-      }
+      if(f.x<0) f.x=canvas.width;
+      if(f.y<0) f.y=canvas.height;
+
       f.alpha = 0.14 + 0.5*Math.abs(Math.sin(t/600 + f.phase));
       ctx.save();
       ctx.globalAlpha=f.alpha;
@@ -438,6 +454,13 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
       ctx.fillStyle=colorGrad;
       ctx.fillText(f.word,f.x,f.y);
       ctx.restore();
+    }
+
+    // Update merge points
+    for(let i=mergePoints.length-1;i>=0;i--){
+      mergePoints[i].radius += 2;
+      mergePoints[i].life -=1;
+      if(mergePoints[i].life <=0) mergePoints.splice(i,1);
     }
   }
 
@@ -466,6 +489,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     ctx.globalAlpha=1;
     requestAnimationFrame(render);
   }
+
   requestAnimationFrame(render);
 })();
 </script>" 
