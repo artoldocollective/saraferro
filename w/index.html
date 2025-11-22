@@ -389,14 +389,15 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
 
   let time=0;
   const words=[&quot;amore&quot;,&quot;luna&quot;,&quot;sogno&quot;,&quot;verso&quot;,&quot;vento&quot;,&quot;eco&quot;,&quot;silenzio&quot;,&quot;cuore&quot;,&quot;poesia&quot;,&quot;notte&quot;,&quot;stelle&quot;,&quot;fiamma&quot;,&quot;memoria&quot;,&quot;rima&quot;,&quot;incanto&quot;,&quot;ambra&quot;,&quot;onde&quot;,&quot;filo&quot;,&quot;aria&quot;,&quot;ombra&quot;];
+
+  const density = window.innerWidth < 768 ? 90 : 180; // fewer words on mobile
   const floating=[];
-  const density=180;
   for(let i=0;i<density;i++){
     floating.push({
       x:Math.random()*canvas.width,
       y:Math.random()*canvas.height,
-      vx:(Math.random()-0.5)*0.16, // slightly faster for more action
-      vy:0.22+Math.random()*0.44,  // slightly faster for more action
+      vx:(Math.random()-0.5)*0.16,
+      vy:0.22+Math.random()*0.44,
       size:12+Math.random()*48,
       word:words[Math.floor(Math.random()*words.length)],
       color:'#fff',
@@ -406,19 +407,24 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
   }
 
   const mouse={x:null,y:null};
-  window.addEventListener('mousemove', e=>{mouse.x=e.clientX; mouse.y=e.clientY;});
-  window.addEventListener('mouseout', ()=>{mouse.x=null; mouse.y=null;});
+  // Mouse
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+  // Touch
+  window.addEventListener('touchstart', e => { if(e.touches.length>0){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
+  window.addEventListener('touchmove', e => { if(e.touches.length>0){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
+  window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
 
   function drawFloating(t){
     for(let i=0;i<floating.length;i++){
       const f=floating[i];
-      f.x += f.vx + Math.sin(t/850 + f.phase)*0.075; // bigger oscillation for more action
+      f.x += f.vx + Math.sin(t/850 + f.phase)*0.075;
       f.y += f.vy + Math.cos(t/750 + f.phase)*0.075;
       if(f.x>canvas.width) f.x=0;
       if(f.y>canvas.height) f.y=0;
       if(mouse.x!==null){
         const dx=mouse.x-f.x, dy=mouse.y-f.y, d2=dx*dx+dy*dy;
-        if(d2<40000){f.vx+=dx*0.0015; f.vy+=dy*0.0015;} // stronger touch pull
+        if(d2<40000){f.vx+=dx*0.0015; f.vy+=dy*0.0015;}
       }
       f.alpha = 0.14 + 0.5*Math.abs(Math.sin(t/600 + f.phase));
       ctx.save();
@@ -436,7 +442,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
   }
 
   function maybeFlash(t){
-    if(Math.random()<0.008){ // slightly higher flash frequency
+    if(Math.random()<0.008){
       const f=floating[Math.floor(Math.random()*floating.length)];
       ctx.save();
       ctx.globalAlpha=0.32+Math.random()*0.2;
