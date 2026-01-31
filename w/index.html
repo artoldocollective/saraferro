@@ -349,6 +349,181 @@ button:active {
 border-radius: 25px;
 }
 
+/* ============================
+Dynamic Navbar & Mobile Menu
+=========================== */
+
+/* ---------- Mobile + Tablet: up to 1024px ---------- */
+@media (max-width: 1024px) {
+
+  /* --- Navbar container --- */
+  #dynamic-navbar-container,
+  nav.uk-navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* keep logo on left */
+    width: 100%;
+    min-height: 60px;
+    background-color: var(--navbar-bg-color, #fff);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* --- Navbar UL --- */
+  #dynamic-navbar-container ul.navbar-scroll,
+  nav.uk-navbar-container ul.navbar-scroll {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- Hide all text links, keep layout --- */
+  #dynamic-navbar-container ul.navbar-scroll a:not(:has(img)),
+  nav.uk-navbar-container ul.navbar-scroll a:not(:has(img)) {
+    visibility: hidden;       /* hides but keeps space */
+    pointer-events: none;     /* prevents clicks */
+    height: 0;                /* optional: collapse vertical space */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- Logo link visible --- */
+  #dynamic-navbar-container ul.navbar-scroll a:has(img),
+  nav.uk-navbar-container ul.navbar-scroll a:has(img) {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* --- Logo image styling --- */
+  #dynamic-navbar-container ul.navbar-scroll a:has(img) img,
+  nav.uk-navbar-container ul.navbar-scroll a:has(img) img {
+    display: block;
+    max-height: 40px;
+    width: auto;
+  }
+
+/* --- Logo image spacing --- */
+#dynamic-navbar-container ul.navbar-scroll a:has(img) img,
+nav.uk-navbar-container ul.navbar-scroll a:has(img) img {
+    display: block;
+    max-height: 40px;
+    width: auto;
+    margin-left: 10px; /* move logo 10px from left without breaking flex alignment */
+}
+
+  /* --- Mobile Menu Toggle (Hamburger) --- */
+  #mobile-menu-toggle {
+    display: flex;
+    position: fixed;
+    top: 12.5px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    isolation: isolate;
+    background: transparent;
+  }
+
+  #mobile-menu-toggle .bar {
+    width: 30px;
+    height: 2px;
+    background-color: var(--navbar-link-color, #000);
+    position: absolute;
+    border-radius: 1px;
+    transition: all 0.4s ease;
+    z-index: 2;
+  }
+
+  #mobile-menu-toggle .bar1 { top: 12px; }
+  #mobile-menu-toggle .bar2 { top: 22px; }
+
+  #mobile-menu-toggle.open .bar1 {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  #mobile-menu-toggle.open .bar2 {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* --- Mobile Menu Panel --- */
+  #mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--navbar-bg-color, #fff);
+    color: var(--navbar-text-color, #000);
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 9998;
+  }
+
+  #mobile-menu.show {
+    display: flex !important;
+  }
+
+  #mobile-menu a {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1.25rem;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    color: var(--navbar-text-color, #000);
+    text-decoration: none;
+    background: transparent;
+  }
+
+  /* Hide logo in mobile menu (optional) */
+  #mobile-menu .navbar-logo { display: none; }
+}
+
+/* ---------- Large screens: 1025px and above ---------- */
+@media (min-width: 1025px) {
+  #mobile-menu-toggle { display: none !important; }
+  #mobile-menu { display: none; }
+
+  /* Navbar container */
+  #dynamic-navbar-container,
+  nav.uk-navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 60px;
+    background-color: var(--navbar-bg-color, #fff);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Navbar links visible */
+  #dynamic-navbar-container ul.navbar-scroll a,
+  nav.uk-navbar-container ul.navbar-scroll a {
+    display: inline-block !important;
+    visibility: visible !important;
+    height: auto !important;
+    margin: initial;
+    padding: initial;
+    text-decoration: none;
+  }
+}
+
+#dynamic-navbar-container .navbar-scroll a:has(img) {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
 </style>
 
 
@@ -360,10 +535,16 @@ border-radius: 25px;
 <body class="uk-background-muted" id="top">
 <h1 id="site-title-h1" class="visually-hidden">Sara Ferro W. – poetessa</h1>
 
+
 <section id="section-0" class="uk-section uk-section-primary uk-flex uk-flex-middle uk-flex-center" uk-height-viewport="offset-top: true" style="background:#000000;min-height:60vh;padding:0;margin:0;">
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#000000;">
-<iframe srcdoc="<style>
+<iframe srcdoc="<!-- Google Lacquer Font (ADDED) -->
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
+<link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Lacquer&display=swap&quot; rel=&quot;stylesheet&quot;>
+
+<style>
 html,body{margin:0;padding:0;background:#000;overflow:hidden;touch-action:none;}
 #bgCanvas{position:fixed;inset:0;z-index:-10;pointer-events:none;}
 #bgCanvas canvas{position:fixed;top:0;left:0;width:100%;height:100%;display:block;filter:blur(0.6px) contrast(1.05);}
@@ -374,11 +555,15 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
 </style>
 </head>
 <body>
+
 <div class=&quot;hero&quot;>
-  <h1>Sara Ferro W.</h1>
-  <h2>poetessa</h2>
+  <h1 style=&quot;font-family:'Lacquer', cursive;&quot;>Sara Ferro W.</h1>
+  <h2 style=&quot;font-family:'Lacquer', cursive;&quot;>poetessa</h2>
+  <img src=&quot;./sara-ferro-w.jpeg&quot; height=&quot;400px;&quot;style=&quot;border-radius:25px;&quot;>
 </div>
+
 <div id=&quot;bgCanvas&quot;><canvas id=&quot;mainCanvas&quot;></canvas></div>
+
 <script>
 (function(){
   const canvas = document.getElementById(&quot;mainCanvas&quot;);
@@ -408,12 +593,10 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
 
   const mergePoints = [];
   function addMergePoint(x, y){
-    mergePoints.push({x, y, radius:0, life:30}); // same as desktop, not crazy
+    mergePoints.push({x, y, radius:0, life:30});
   }
 
-  // Mouse
   window.addEventListener('mousemove', e => { addMergePoint(e.clientX, e.clientY); });
-  // Touch
   canvas.addEventListener('touchstart', e => { e.preventDefault(); const t = e.touches[0]; addMergePoint(t.clientX, t.clientY); });
   canvas.addEventListener('touchmove', e => { e.preventDefault(); const t = e.touches[0]; addMergePoint(t.clientX, t.clientY); });
 
@@ -421,7 +604,6 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
     for(let i=0;i<floating.length;i++){
       const f=floating[i];
 
-      // Merge/twirl effect, subtle like desktop
       mergePoints.forEach(mp => {
         const dx = mp.x - f.x;
         const dy = mp.y - f.y;
@@ -444,7 +626,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
       f.alpha = 0.14 + 0.5*Math.abs(Math.sin(t/600 + f.phase));
       ctx.save();
       ctx.globalAlpha=f.alpha;
-      ctx.font=`${f.size}px monospace`;
+      ctx.font=`${f.size}px 'Lacquer', cursive`;
       ctx.textAlign='center';
       const colorGrad = ctx.createLinearGradient(f.x-f.size,f.y-f.size,f.x+f.size,f.y+f.size);
       colorGrad.addColorStop(0,'#ff6b9f');
@@ -455,7 +637,6 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
       ctx.restore();
     }
 
-    // Update merge points
     for(let i=mergePoints.length-1;i>=0;i--){
       mergePoints[i].radius += 2;
       mergePoints[i].life -=1;
@@ -468,7 +649,7 @@ h2{margin-top:6px;font-weight:300;font-size:24px;opacity:0.9;letter-spacing:3px;
       const f=floating[Math.floor(Math.random()*floating.length)];
       ctx.save();
       ctx.globalAlpha=0.32+Math.random()*0.2;
-      ctx.font='700 72px monospace';
+      ctx.font=&quot;72px 'Lacquer', cursive&quot;;
       ctx.textAlign='center';
       ctx.fillStyle='#ff5555';
       ctx.fillText(f.word,f.x,f.y);
@@ -504,9 +685,123 @@ style="background:#000000; color:#ffffff; text-align:center;">
 <div class="footer-social" style="margin-bottom:10px;"><a href="https://www.amazon.it/stores/author/B0D3CN5SCD/about" uk-icon="icon: bag; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://saraferro.com" uk-icon="icon: link-external; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a></div>
 <p><strong>Sara Ferro W. – poetessa</strong></p>
 
-<p>&copy; 2025 Sara Ferro W.</p>
+<p>&copy; 2026 Sara Ferro W.</p>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit-icons.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Detect navbar container dynamically
+  let dynamicNavContainer = document.getElementById('dynamic-navbar-container');
+  if (!dynamicNavContainer) {
+    // fallback for Preview / Export
+    dynamicNavContainer = document.querySelector('nav.uk-navbar-container');
+  }
+  if (!dynamicNavContainer) return; // no navbar found
+
+  let menuBuilt = false;
+
+  // Helpers
+  const isSmallScreen = () => window.innerWidth <= 1024;
+  const isMenuOpen = () => mobileMenu.classList.contains('show');
+
+  const isNavbarEnabled = () => {
+    // Editor: checkbox enabled
+    const enableNavbarCheckbox = document.getElementById('enable-navbar');
+    return enableNavbarCheckbox ? enableNavbarCheckbox.checked : true; // Preview: always enabled
+  };
+
+  // Populate mobile menu
+  function populateMobileMenu(force = false) {
+    if (!force && (menuBuilt || isMenuOpen())) return;
+
+    const nav = dynamicNavContainer.querySelector('ul.navbar-scroll');
+    if (!nav || !mobileMenu) return;
+
+    // Update colors
+    const navbarBg = getComputedStyle(nav.parentElement || nav).backgroundColor;
+    const navbarText = getComputedStyle(nav).color;
+    document.documentElement.style.setProperty('--navbar-bg-color', navbarBg);
+    document.documentElement.style.setProperty('--navbar-text-color', navbarText);
+    document.documentElement.style.setProperty('--navbar-link-color', navbarText);
+
+    const fragment = document.createDocumentFragment();
+    mobileMenu.innerHTML = '';
+
+    nav.querySelectorAll('a').forEach(link => {
+      const clone = link.cloneNode(true);
+      clone.removeAttribute('id');
+
+      clone.addEventListener('click', e => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      fragment.appendChild(clone);
+    });
+
+    mobileMenu.appendChild(fragment);
+    menuBuilt = true;
+  }
+
+  // Open / Close Menu
+  function openMobileMenu() {
+    populateMobileMenu(true);
+    mobileMenu.classList.add('show');
+    mobileMenuToggle.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('show');
+    mobileMenuToggle.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      menuBuilt = false; // rebuild next time
+    }, 350); // match CSS transition
+  }
+
+  // Update visibility
+  function updateMobileMenuVisibility() {
+    if (isNavbarEnabled() && isSmallScreen()) {
+      mobileMenuToggle.style.display = 'flex';
+    } else {
+      mobileMenuToggle.style.display = 'none';
+      closeMobileMenu();
+    }
+  }
+
+  // MutationObserver to detect dynamic changes in navbar
+  if (dynamicNavContainer) {
+    const observer = new MutationObserver(() => {
+      if (isMenuOpen()) return;
+      menuBuilt = false;
+      populateMobileMenu(true);
+    });
+    observer.observe(dynamicNavContainer, { childList: true, subtree: false });
+  }
+
+  // Events
+  mobileMenuToggle.addEventListener('click', () => {
+    isMenuOpen() ? closeMobileMenu() : openMobileMenu();
+  });
+  window.addEventListener('resize', updateMobileMenuVisibility);
+
+  const enableNavbarCheckbox = document.getElementById('enable-navbar');
+  enableNavbarCheckbox?.addEventListener('change', () => {
+    menuBuilt = false;
+    populateMobileMenu(true);
+    updateMobileMenuVisibility();
+  });
+
+  // Initial setup
+  populateMobileMenu(true);
+  updateMobileMenuVisibility();
+});
+</script>
+
 </body>
 </html>
