@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Sara Ferro - Regista | Artista | Scrittrice</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
+<meta name="description" content="Sara Ferro è una regista e artista italiana che realizza documentari, film sperimentali, opere in realtà virtuale e videoarte.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Sara Ferro">
 <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
@@ -24,7 +24,15 @@
 
 
 
+<!-- Schema -->
 
+<script type="application/ld+json">
+{
+  "@context" : "https://schema.org",
+  "@type" : "WebSite",
+  "name" : "Sara Ferro - Regista | Artista | Scrittrice"
+}
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/css/uikit.min.css" />
 <style>
 .live-paragraph { font-size: 1.13rem; max-width: 40em; margin-left:auto; margin-right:auto;}
@@ -664,24 +672,16 @@ nav.uk-navbar-container .navbar-scroll a:has(img),
 
 <nav class="uk-navbar-container" style="background:#5e30eb;position:sticky;top:0;z-index:999;">
 <ul class="navbar-scroll" uk-scrollspy-nav="closest: a; scroll: true; offset: 100" style="color:#ff9300;">
-<li><a class="navbar-logo-link" href="#top"><img src="media/logo.jpg" alt="Sara Ferro - Regista | Artista | Scrittrice" class="navbar-logo"></a></li><li><a href="#section-1">Sara Ferro</a></li><li><a href="#section-3">Sara Ferro</a></li><li><a href="#section-5">Your Headline</a></li>
+<li><a class="navbar-logo-link" href="#top"><img src="media/logo.png" alt="Sara Ferro - Regista | Artista | Scrittrice" class="navbar-logo"></a></li><li><a href="#section-1">Sara Ferro</a></li>
 </ul>
 </nav>
 
 <section id="section-0" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#ff9300;">
-<iframe srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-
-<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
+<iframe srcdoc="<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
 <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
 <link href=&quot;https://fonts.googleapis.com/css2?family=Lacquer&display=swap&quot; rel=&quot;stylesheet&quot;>
-
-<title>Lacquer Typewriter</title>
 
 <style>
 html,
@@ -692,63 +692,74 @@ body{
     background:transparent;
     overflow:hidden;
 }
-
 body{
     display:flex;
     align-items:center;
     justify-content:center;
 }
-
+/* Background */
+#bg{
+    position:fixed;
+    top:20px;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    overflow:hidden;
+    border-radius:50px;
+    z-index:1;
+}
+#bg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:blur(30px);
+    transform:scale(1.15);
+}
+/* Typewriter */
 #wrapper{
     position:fixed;
     inset:0;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-family:&quot;Lacquer&quot;, system-ui, sans-serif;
     font-size:clamp(3rem,8vw,7rem);
     line-height:1.3;
-
     color:white;
     text-align:center;
-
     pointer-events:none;
     z-index:9999;
-
-    /* helps prevent rendering artifacts */
     transform:translateZ(0);
     will-change:contents;
 }
-
 #typewriter{
     display:inline-block;
     min-height:1.3em;
     padding-bottom:0.15em;
 }
-
 #cursor{
     display:inline-block;
     margin-left:0.08em;
     animation:blink .8s infinite;
 }
-
 @keyframes blink{
     50%{
         opacity:0;
     }
 }
 </style>
-</head>
 
-<body>
-
+<div id=&quot;bg&quot;>
+    <img
+        src=&quot;https://media.giphy.com/media/Q5LCcEem1D8xntsgDF/giphy.gif&quot;
+        alt=&quot;&quot;
+    >
+</div>
 <div id=&quot;wrapper&quot;>
     <span id=&quot;typewriter&quot;></span>
     <span id=&quot;cursor&quot;>|</span>
 </div>
-
 <script>
 const words = [
     &quot;Sara Ferro&quot;,
@@ -758,51 +769,34 @@ const words = [
     &quot;Curatrice&quot;,
     &quot;Traduttrice&quot;
 ];
-
 const el = document.getElementById(&quot;typewriter&quot;);
-
 let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
-
 function type(){
-
     const currentWord = words[wordIndex];
-
     if(!deleting){
-
         el.textContent = currentWord.substring(0, charIndex + 1);
         charIndex++;
-
         if(charIndex === currentWord.length){
-
             setTimeout(() => {
                 deleting = true;
                 type();
             }, 1500);
-
             return;
         }
-
     } else {
-
         el.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
-
         if(charIndex === 0){
             deleting = false;
             wordIndex = (wordIndex + 1) % words.length;
         }
     }
-
     setTimeout(type, deleting ? 45 : 110);
 }
-
 type();
-</script>
-
-</body>
-</html>" 
+</script>" 
 style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;" 
 sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 </iframe>
@@ -813,7 +807,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 
 <div class="uk-padding-large" style="background:#5e30eb;">
 <div class="uk-background-fixed uk-background-center-center uk-height-medium uk-border-rounded uk-box-shadow-large"
-style="background-image: url(media/mediafile1.jpg); background-size: cover; background-position: center; min-height:400px;">
+style="background-image: url(media/mediafile1.jpeg); background-size: cover; background-position: center; min-height:400px;">
 </div>
 <div class="uk-text-center uk-margin-large-top"
 uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:150; repeat:false">
@@ -821,7 +815,7 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
 <div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
 <h2 class="live-heading uk-heading-2xlarge" style="color: #ffffff;">Sara Ferro</h2>
 <div class="live-subtitle uk-heading-medium" style="color:#ffffff">Sara Ferro W. (1977, Milano) studia e si laurea in Sociologia, specializzandosi in Media. Ha un alterego detective undercover sui generis, che segue indizi antiquari, spia scene subculturali transumane e frequenta mondi più esoterici che esotici, ma non tralasciando mai di curare un distaccato piglio etnologico. Vive tra nonchalanche ed estrema versatilità. Sua passione i vertici del triangolo industriale, natali milanesi, decadi genovesi, orizzonti sulle vette torinesi. Ha tutto un passato tra altre città ancora, tutte ufficialmente d’arte, come Berlino e Venezia e un po’ di Londra. Difficile starle dietro mentre salta da una sinapsi alla prossima sinergia, è una moving imaginist con suo campo di elezione nelle moving images che ama si animino sulle piattaforme online mosse da onde digitali. Vorrebbe lasciare il segno nella teoria sociologica attraverso riflessioni di natura audiovisiva oppure riflessi ottici che con uno stimolo visivo potente si colleghino ipertestualmente ad informazioni di natura simbolica e dunque universale. La sua sperimentazione ha allure psicogeografica, anche quando i territori sono quelli squisitamente mentali.  Se di studi è sociologa magistrale è da sempre imprestata alla germanistica che appunto frequenta dai tempi accademici in gran parte trascorsi a Berlino. Oltre a tradurre letteratura traduce sostrati intercettati nella cultura tedesca in immagini in movimento, trasporta impressioni da carta su altri media, trasferisce paesaggi culturali e panorami sociali in mondi sintetici di virtuale tuttavia spesso scottante realtà, non per forza attuale, tuttavia di norma con forte potenziale di riattualizzazione, di revival, di rediviva vivacità.  Le cose germaniche rientrano nel suo orizzonte di senso da cui sconfina però più che di sovente in cerca di cartine di tornasole per testarne la bontà ben oltre l’idealità, come si suole per le idee valide. Se non traduce, filma o dirige, ambienta mondi sintetici e cura transfer culturali tra vecchie e nuove psichedelie e cybermanifesti, scrive poemetti semiseri.</div>
-
+<a href="mailto:ciao@saraferro.com" class="uk-button uk-button-default uk-margin-top uk-border-rounded" target="_blank">Scrivimi</a>
 </div>
 
 </div>
@@ -839,56 +833,6 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
 
       <ul class="uk-slider-items uk-child-width-1-1" style="height:100vh; margin:0; padding:0;">
         
-  <li>
-    <div class="uk-cover-container"
-         style="width:100vw;height:100vh;overflow:hidden;">
-
-      
-      <iframe
-        src="https://www.youtube.com/embed/0Mg8IfeWbJ0?autoplay=1&mute=1&loop=1&playlist=0Mg8IfeWbJ0&controls=0&modestbranding=1&rel=0&playsinline=1"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        uk-cover
-        style="border:0;pointer-events:none;">
-      </iframe>
-    
-
-      
-        <div style="
-          position:absolute;
-          top:0;
-          left:0;
-          right:0;
-          height:8vh;
-          background:#ff9300;
-          z-index:1;
-          pointer-events:none;
-        "></div>
-
-        <div style="
-          position:absolute;
-          bottom:0;
-          left:0;
-          right:0;
-          height:8vh;
-          background:#ff9300;
-          z-index:1;
-          pointer-events:none;
-        "></div>
-      
-
-      <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
-           <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Secropolis</h2>
-           
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/secropolis" target="_blank" rel="noopener">Watch Now</a>
-         </div>
-         </div>
-      
-
-    </div>
-  </li>
-
   <li>
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
@@ -928,10 +872,160 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
-           <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Embassy of the Free Mind</h2>
+           
            
            <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/embassyofthefreemind" target="_blank" rel="noopener">Watch Now</a>
+           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/embassyofthefreemind" target="_blank" rel="noopener">Guarda ora</a>
+         </div>
+         </div>
+      
+
+    </div>
+  </li>
+
+  <li>
+    <div class="uk-cover-container"
+         style="width:100vw;height:100vh;overflow:hidden;">
+
+      
+      <iframe
+        src="https://www.youtube.com/embed/BTAz3LAEe5M?autoplay=1&mute=1&loop=1&playlist=BTAz3LAEe5M&controls=0&modestbranding=1&rel=0&playsinline=1"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        uk-cover
+        style="border:0;pointer-events:none;">
+      </iframe>
+    
+
+      
+        <div style="
+          position:absolute;
+          top:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+
+        <div style="
+          position:absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+      
+
+      <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
+           
+           
+           <div class="uk-margin-top">
+           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/jung" target="_blank" rel="noopener">Guarda ora</a>
+         </div>
+         </div>
+      
+
+    </div>
+  </li>
+
+  <li>
+    <div class="uk-cover-container"
+         style="width:100vw;height:100vh;overflow:hidden;">
+
+      
+      <iframe
+        src="https://www.youtube.com/embed/0Mg8IfeWbJ0?autoplay=1&mute=1&loop=1&playlist=0Mg8IfeWbJ0&controls=0&modestbranding=1&rel=0&playsinline=1"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        uk-cover
+        style="border:0;pointer-events:none;">
+      </iframe>
+    
+
+      
+        <div style="
+          position:absolute;
+          top:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+
+        <div style="
+          position:absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+      
+
+      <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
+           
+           
+           <div class="uk-margin-top">
+           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/secropolis" target="_blank" rel="noopener">Guarda ora</a>
+         </div>
+         </div>
+      
+
+    </div>
+  </li>
+
+  <li>
+    <div class="uk-cover-container"
+         style="width:100vw;height:100vh;overflow:hidden;">
+
+      
+      <iframe
+        src="https://www.youtube.com/embed/oVCGhIcvET8?autoplay=1&mute=1&loop=1&playlist=oVCGhIcvET8&controls=0&modestbranding=1&rel=0&playsinline=1"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        uk-cover
+        style="border:0;pointer-events:none;">
+      </iframe>
+    
+
+      
+        <div style="
+          position:absolute;
+          top:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+
+        <div style="
+          position:absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          height:8vh;
+          background:#ff9300;
+          z-index:1;
+          pointer-events:none;
+        "></div>
+      
+
+      <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
+           
+           
+           <div class="uk-margin-top">
+           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/ugodossi" target="_blank" rel="noopener">Guarda ora</a>
          </div>
          </div>
       
@@ -954,7 +1048,7 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
 </section>
 <section id="section-3" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
 <div class="uk-container uk-padding" style="background:#5e30eb; color:#ff9300">
-      <h1 class="uk-heading uk-text-center" style="color:#ff9300" uk-scrollspy="cls: uk-animation-slide-top; delay: 0; offset: 100; repeat: true"><span>Sara Ferro</span></h1>
+      
       
       <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m"
            uk-grid="masonry: true" uk-lightbox="animation: slide; toggle: a" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150; repeat: false">
@@ -1697,15 +1791,6 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
     </a>
   </div>
 <div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img15.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img15.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
     <a class="uk-inline" data-type="image" href="media/gallery4_img83.jpg" 
        data-caption="Sara Ferro" 
        aria-label="Sara Ferro">
@@ -2029,6 +2114,51 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
            alt="Sara Ferro">
     </a>
   </div>
+<div>
+    <a class="uk-inline" data-type="image" href="media/gallery4_img119.jpg" 
+       data-caption="Sara Ferro" 
+       aria-label="Sara Ferro">
+      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
+           src="media/gallery4_img119.jpg" 
+           alt="Sara Ferro">
+    </a>
+  </div>
+<div>
+    <a class="uk-inline" data-type="image" href="media/gallery4_img120.jpg" 
+       data-caption="Sara Ferro" 
+       aria-label="Sara Ferro">
+      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
+           src="media/gallery4_img120.jpg" 
+           alt="Sara Ferro">
+    </a>
+  </div>
+<div>
+    <a class="uk-inline" data-type="image" href="media/gallery4_img121.jpg" 
+       data-caption="Sara Ferro" 
+       aria-label="Sara Ferro">
+      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
+           src="media/gallery4_img121.jpg" 
+           alt="Sara Ferro">
+    </a>
+  </div>
+<div>
+    <a class="uk-inline" data-type="image" href="media/gallery4_img122.jpg" 
+       data-caption="Sara Ferro" 
+       aria-label="Sara Ferro">
+      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
+           src="media/gallery4_img122.jpg" 
+           alt="Sara Ferro">
+    </a>
+  </div>
+<div>
+    <a class="uk-inline" data-type="image" href="media/gallery4_img123.jpg" 
+       data-caption="Sara Ferro" 
+       aria-label="Sara Ferro">
+      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
+           src="media/gallery4_img123.jpg" 
+           alt="Sara Ferro">
+    </a>
+  </div>
       </div>
     </div>
 </section>
@@ -2168,59 +2298,139 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 </div>
 
 </section>
-<section id="section-5" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
+<section id="section-5" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
 
-<div class="uk-cover-container"
-     style="position:relative;width:100vw;height:100vh;overflow:hidden;">
-
-<iframe src="https://www.youtube.com/embed/0Mg8IfeWbJ0?autoplay=1&mute=1&controls=0&loop=1&playlist=0Mg8IfeWbJ0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen uk-cover uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></iframe>
-
-
-<div style="
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:8vh;
-  background:#ff9300;
-  z-index:1;
-  pointer-events:none;
-"></div>
-
-<div style="
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  height:8vh;
-  background:#ff9300;
-  z-index:1;
-  pointer-events:none;
-"></div>
-
-
-<div style="
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:100%;
-  z-index:2;
-"
-class="uk-text-center uk-light">
-
-<div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
-<h2 class="live-heading uk-heading-large" style="color: #ffffff;">Your Headline</h2>
-
-
+<div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#5e30eb;">
+<iframe srcdoc="<iframe
+  src=&quot;https://wundersaar.github.io&quot;
+  style=&quot;
+    display:block;
+    width:100%;
+    height:100vh;
+    border:none;
+    pointer-events:auto;
+  &quot;>
+</iframe>" 
+style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;" 
+sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+</iframe>
 </div>
 
+</section>
+<section id="section-6" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
+
+<div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#ff9300;">
+<iframe srcdoc="<div style=&quot;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+&quot;>
+    <button id=&quot;openLightbox&quot; style=&quot;
+        padding:16px 32px;
+        border:none;
+        border-radius:999px;
+        background:#111;
+        color:#fff;
+        font-size:16px;
+        cursor:pointer;
+        transition:.2s;
+    &quot;>
+        Mostre
+    </button>
 </div>
 
+<div id=&quot;lightbox&quot; style=&quot;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+&quot;>
+<button id=&quot;closeLightbox&quot; style=&quot;
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:10001;
+    width:48px;
+    height:48px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:#000;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+&quot;>
+    <svg
+        width=&quot;40&quot;
+        height=&quot;40&quot;
+        viewBox=&quot;0 0 24 24&quot;
+        aria-hidden=&quot;true&quot;
+    >
+        <path
+            d=&quot;M6 6L18 18M18 6L6 18&quot;
+            fill=&quot;none&quot;
+            stroke=&quot;#fff&quot;
+            stroke-width=&quot;2.5&quot;
+            stroke-linecap=&quot;round&quot;
+        />
+    </svg>
+</button>
+
+    <iframe
+        src=&quot;https://artoldo.github.io/exhibitions.html&quot;
+        style=&quot;
+            width:min(95vw,1400px);
+            height:min(90vh,900px);
+            border:none;
+            border-radius:25px;
+            background:#fff;
+        &quot;
+        allowfullscreen>
+    </iframe>
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+
+document.getElementById('openLightbox').onclick = () => {
+    lightbox.style.display = 'flex';
+};
+
+document.getElementById('closeLightbox').onclick = () => {
+    lightbox.style.display = 'none';
+};
+
+lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+    }
+});
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        lightbox.style.display = 'none';
+    }
+});
+</script>" 
+style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;" 
+sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+</iframe>
 </div>
 
 </section>
 
+<footer class="uk-section uk-section-small" 
+style="background:#5e30eb; color:#ff9300; text-align:center;">
+<div class="footer-social" style="margin-bottom:10px;"><a href="mailto:ciao@saraferro.com" uk-icon="icon: mail; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ff9300"></a></div>
+<p><strong>Sara Ferro - Regista | Artista | Scrittrice</strong></p>
+
+<p>&copy; 2026 Sara Ferro</p>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit-icons.min.js"></script>
 <script>
