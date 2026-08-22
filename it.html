@@ -3,23 +3,401 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Sara Ferro - Regista | Artista | Scrittrice</title>
+<title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Sara Ferro è una regista e artista italiana che realizza documentari, film sperimentali, opere in realtà virtuale e videoarte.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Sara Ferro">
-<link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
 <style>
 
-                body,
-                h1, h2, h3, h4, h5, h6,
-                .live-heading,
-                .live-subtitle,
-                .live-paragraph,
-                a.uk-button {
+                .core-editor #page,
+                .core-editor #page h1, .core-editor #page h2, .core-editor #page h3,
+                .core-editor #page h4, .core-editor #page h5, .core-editor #page h6,
+                .core-editor #page .live-heading,
+                .core-editor #page .live-subtitle,
+                .core-editor #page .live-paragraph,
+                .core-editor #page a.uk-button,
+                .core-editor #editor-footer,
+                .core-editor #editor-footer h1, .core-editor #editor-footer h2, .core-editor #editor-footer h3,
+                .core-editor #editor-footer h4, .core-editor #editor-footer h5, .core-editor #editor-footer h6,
+                .core-editor #editor-footer .live-heading,
+                .core-editor #editor-footer .live-subtitle,
+                .core-editor #editor-footer .live-paragraph,
+                .core-editor #editor-footer a.uk-button,
+                body:not(.core-editor),
+                body:not(.core-editor) h1, body:not(.core-editor) h2, body:not(.core-editor) h3,
+                body:not(.core-editor) h4, body:not(.core-editor) h5, body:not(.core-editor) h6,
+                body:not(.core-editor) .live-heading,
+                body:not(.core-editor) .live-subtitle,
+                body:not(.core-editor) .live-paragraph,
+                body:not(.core-editor) a.uk-button {
                     font-family: 'Trade Winds', sans-serif !important;
                 }
             
+/* Sacrisoft CORE CTA — single global button system */
+.sc-core-cta{
+  --sc-btn-bg:transparent;
+  --sc-btn-text:#ffffff;
+  --sc-btn-border:#ffffff;
+
+  appearance:none;
+  -webkit-appearance:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+
+  min-height:52px;
+  padding:0 30px;
+  margin-top:18px;
+
+  border:1px solid var(--sc-btn-border);
+  border-radius:25px;
+
+  background:var(--sc-btn-bg);
+  color:var(--sc-btn-text) !important;
+
+  font:inherit;
+  font-size:16px;
+  font-weight:500;
+  line-height:1.2;
+  text-align:center;
+  text-decoration:none !important;
+  text-transform:none;
+  letter-spacing:normal;
+
+  cursor:pointer;
+  transition:
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    opacity .18s ease,
+    filter .18s ease,
+    transform .18s ease;
+}
+
+/* Default: white outline */
+.sc-core-cta-default{
+  --sc-btn-bg:transparent;
+  --sc-btn-text:#ffffff;
+  --sc-btn-border:#ffffff;
+}
+.sc-core-cta-default:hover{
+  --sc-btn-bg:#ffffff;
+  --sc-btn-text:#000000;
+}
+
+/* Light: white background / black text */
+.sc-core-cta-light{
+  --sc-btn-bg:#ffffff;
+  --sc-btn-text:#000000;
+  --sc-btn-border:#ffffff;
+}
+.sc-core-cta-light:hover{
+  --sc-btn-bg:#f2f2f2;
+  --sc-btn-border:#f2f2f2;
+}
+
+/* Dark: black background / white text */
+.sc-core-cta-dark{
+  --sc-btn-bg:#000000;
+  --sc-btn-text:#ffffff;
+  --sc-btn-border:#000000;
+}
+.sc-core-cta-dark:hover{
+  --sc-btn-bg:#222222;
+  --sc-btn-border:#222222;
+}
+
+/* Text: intentionally larger and readable */
+.sc-core-cta-text{
+  min-height:auto;
+  padding:4px 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#ffffff !important;
+  font-size:1.35rem;
+  line-height:1.35;
+  text-decoration:underline !important;
+  text-underline-offset:.18em;
+}
+.sc-core-cta-text:hover{
+  opacity:.75;
+}
+
+/* Custom: CSS variables are written inline by makeButtonHtml() */
+.sc-core-cta-custom{
+  --sc-btn-bg:#FFA500;
+  --sc-btn-text:#ffffff;
+  --sc-btn-border:#FFA500;
+}
+.sc-core-cta-custom:hover{
+  filter:brightness(.92);
+}
+
+/* Content button groups */
+.sc-content-button-pair,
+.faq-answer-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.faq-answer-buttons{
+  justify-content:flex-start;
+}
+
+.sc-content-button-pair .sc-core-cta,
+.faq-answer-buttons .sc-core-cta{
+  margin-top:0;
+}
+
+/* Lightbox wrappers should behave like the button itself. */
+.sc-content-button-pair > .sc-lightbox-link,
+.faq-answer-buttons > .sc-lightbox-link{
+  display:inline-flex;
+}
+
+/* Mobile: stack only when needed, with space before button 2. */
+@media(max-width:640px){
+  .sc-content-button-pair,
+  .faq-answer-buttons{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .sc-content-button-pair > *,
+  .faq-answer-buttons > *{
+    width:100%;
+  }
+
+  .sc-content-button-pair > *:nth-child(2),
+  .faq-answer-buttons > *:nth-child(2){
+    margin-top:12px;
+  }
+
+  .sc-content-button-pair .sc-core-cta,
+  .faq-answer-buttons .sc-core-cta{
+    width:100%;
+  }
+}
+
+/* Default: UIkit-like white outline */
+.sc-core-cta.sc-core-cta-default{
+  background:transparent !important;
+  color:#ffffff !important;
+  border:1px solid #ffffff !important;
+}
+.sc-core-cta.sc-core-cta-default:hover{
+  background:#ffffff !important;
+  color:#000000 !important;
+}
+
+/* Light: white background / black text */
+.sc-core-cta.sc-core-cta-light{
+  background:#ffffff !important;
+  color:#000000 !important;
+  border:1px solid #ffffff !important;
+}
+.sc-core-cta.sc-core-cta-light:hover{
+  background:#f2f2f2 !important;
+  color:#000000 !important;
+}
+
+/* Dark: black background / white text */
+.sc-core-cta.sc-core-cta-dark{
+  background:#000000 !important;
+  color:#ffffff !important;
+  border:1px solid #000000 !important;
+}
+.sc-core-cta.sc-core-cta-dark:hover{
+  background:#222222 !important;
+  color:#ffffff !important;
+}
+
+/* Text: larger white text, no box */
+.sc-core-cta.sc-core-cta-text{
+  background:transparent !important;
+  color:#ffffff !important;
+  border:0 !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+  font-size:1.35rem !important;
+  line-height:1.35 !important;
+  text-decoration:underline;
+  text-underline-offset:.18em;
+}
+.sc-core-cta.sc-core-cta-text:hover{
+  color:#ffffff !important;
+  opacity:.78;
+}
+
+/* Custom: orange / white by default */
+.sc-core-cta.sc-core-cta-custom{
+  background:#FFA500 !important;
+  color:#ffffff !important;
+  border:1px solid #FFA500 !important;
+}
+.sc-core-cta.sc-core-cta-custom:hover{
+  filter:brightness(.92);
+}
+
+/* Paired CTA responsive behavior */
+.sc-content-button-pair,
+.faq-answer-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.faq-answer-buttons{
+  justify-content:flex-start;
+}
+.sc-content-button-pair .sc-core-cta,
+.faq-answer-buttons .sc-core-cta{
+  margin-top:0 !important;
+}
+
+@media(max-width:640px){
+  .sc-content-button-pair,
+  .faq-answer-buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .sc-content-button-pair > * ,
+  .faq-answer-buttons > *{
+    width:100%;
+  }
+  .sc-content-button-pair > *:nth-child(2),
+  .faq-answer-buttons > *:nth-child(2){
+    margin-top:12px !important;
+  }
+  .sc-content-button-pair .sc-core-cta,
+  .faq-answer-buttons .sc-core-cta{
+    width:100%;
+    text-align:center;
+  }
+}
+
+
+/* ============================================================
+   Sacrisoft CORE CTA — final override
+   One button system; no outlines.
+   ============================================================ */
+.sc-core-cta{
+  border:0 !important;
+  padding-left:46px !important;
+  padding-right:46px !important;
+}
+
+/* Default: white outline / white text -> solid white / black text */
+.sc-core-cta.sc-core-cta-default,
+.sc-core-cta-default{
+  background:transparent !important;
+  color:#ffffff !important;
+  border:1px solid #ffffff !important;
+}
+.sc-core-cta.sc-core-cta-default:hover,
+.sc-core-cta-default:hover{
+  background:#ffffff !important;
+  color:#000000 !important;
+  border-color:#ffffff !important;
+}
+
+/* Light: white / black -> black / white */
+.sc-core-cta.sc-core-cta-light,
+.sc-core-cta-light{
+  background:#ffffff !important;
+  color:#000000 !important;
+  border:0 !important;
+}
+.sc-core-cta.sc-core-cta-light:hover,
+.sc-core-cta-light:hover{
+  background:#000000 !important;
+  color:#ffffff !important;
+}
+
+/* Dark: black / white -> white / black */
+.sc-core-cta.sc-core-cta-dark,
+.sc-core-cta-dark{
+  background:#000000 !important;
+  color:#ffffff !important;
+  border:0 !important;
+}
+.sc-core-cta.sc-core-cta-dark:hover,
+.sc-core-cta-dark:hover{
+  background:#ffffff !important;
+  color:#000000 !important;
+}
+
+/* Custom: chosen BG/Text; hover swaps them */
+.sc-core-cta.sc-core-cta-custom,
+.sc-core-cta-custom{
+  background:var(--sc-btn-bg,#FFA500) !important;
+  color:var(--sc-btn-text,#ffffff) !important;
+  border:0 !important;
+}
+.sc-core-cta.sc-core-cta-custom:hover,
+.sc-core-cta-custom:hover{
+  background:var(--sc-btn-text,#ffffff) !important;
+  color:var(--sc-btn-bg,#FFA500) !important;
+  border:0 !important;
+  filter:none !important;
+}
+
+/* Text CTA: large white label with UIkit-like animated underline */
+.sc-core-cta.sc-core-cta-text,
+.sc-core-cta-text{
+  position:relative !important;
+  display:inline-flex !important;
+  min-height:auto !important;
+  padding:5px 1px !important;
+  background:transparent !important;
+  color:#ffffff !important;
+  border:0 !important;
+  border-radius:0 !important;
+  font-size:1.35rem !important;
+  line-height:1.35 !important;
+  text-decoration:none !important;
+}
+.sc-core-cta.sc-core-cta-text::after,
+.sc-core-cta-text::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:0;
+  height:1px;
+  background:currentColor;
+  transition:right .25s ease-out;
+}
+.sc-core-cta.sc-core-cta-text:hover::after,
+.sc-core-cta-text:hover::after{
+  right:0;
+}
+.sc-core-cta.sc-core-cta-text:hover,
+.sc-core-cta-text:hover{
+  color:#ffffff !important;
+  opacity:1 !important;
+}
+
+@media(max-width:640px){
+  .sc-core-cta{
+    padding-left:32px !important;
+    padding-right:32px !important;
+  }
+  .sc-content-button-pair > *:nth-child(2),
+  .faq-answer-buttons > *:nth-child(2){
+    margin-top:12px !important;
+  }
+}
+
 </style>
 
 
@@ -33,557 +411,18 @@
   "name" : "Sara Ferro - Regista | Artista | Scrittrice"
 }
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/css/uikit.min.css" />
-<style>
-.live-paragraph { font-size: 1.13rem; max-width: 40em; margin-left:auto; margin-right:auto;}
+<link rel="stylesheet" href="assets/css/uikit.min.css" />
+<link rel="stylesheet" href="assets/css/custom.css" />
 
-/* Simple 3-size system for text blocks */
-.live-heading.h-sm { font-size: 2.2rem; line-height: 1.15; }
-.live-heading.h-md { font-size: 3.2rem; line-height: 1.12; }
-.live-heading.h-lg { font-size: 4.2rem; line-height: 1.08; }
-
-.live-subtitle.sub-sm { font-size: 1.1rem; font-weight: 500; }
-.live-subtitle.sub-md { font-size: 1.35rem; font-weight: 500; }
-.live-subtitle.sub-lg { font-size: 1.7rem; font-weight: 500; }
-
-.live-paragraph.p-sm { font-size: 1.0rem; }
-.live-paragraph.p-md { font-size: 1.13rem; }
-.live-paragraph.p-lg { font-size: 1.30rem; }
-
-@media (max-width: 640px) {
-.live-heading.h-lg { font-size: 2.6rem; }
-.live-heading.h-md { font-size: 2.0rem; }
-.live-heading.h-sm { font-size: 1.6rem; }
-
-.live-subtitle.sub-lg { font-size: 1.2rem; }
-.live-subtitle.sub-md { font-size: 1.05rem; }
-.live-subtitle.sub-sm { font-size: 0.95rem; }
-
-.live-paragraph.p-lg { font-size: 1.05rem; }
-.live-paragraph.p-md { font-size: 0.98rem; }
-.live-paragraph.p-sm { font-size: 0.92rem; }
-}
-
-.live-paragraph.uk-text-large { font-size: 1.45rem; }
-@media (max-width: 640px) {
-.live-paragraph { font-size: 1rem;}
-.live-paragraph.uk-text-large { font-size: 1.1rem;}
-}
-/* Make exported images/videos responsive */
-img, video {
-max-width: 100%;
-height: auto;
-display: block;
-}
-
-@media (max-width: 640px) {
-.live-heading, .live-subtitle, .live-paragraph {
-word-break: break-word;
-white-space: normal;
-}
-}
-.navbar-scroll { display:flex; flex-wrap:nowrap; gap:1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; padding:0.5rem 1rem; align-items:center; list-style:none; margin:0; }
-.navbar-scroll a { flex:0 0 auto; text-decoration:none; color:inherit; }
-.navbar-scroll a.uk-active { font-weight:bold; border-bottom:2px solid currentColor; }
-  
-.navbar-logo {
-height: 40px !important;
-width: auto !important;
-max-height: 40px !important;
-object-fit: contain;
-flex-shrink: 0 !important;
-flex-grow: 0 !important;
-}
-
-.navbar-scroll {
-display: flex;
-flex-wrap: nowrap;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-white-space: nowrap;
-gap: 1rem;
-padding: 0.5rem 1rem;
-}
-.navbar-scroll li {
-flex: 0 0 auto;
-list-style: none;
-}
-
-.visually-hidden {
-position: absolute !important;
-width: 1px; height: 1px;
-margin: -1px; padding: 0; border: 0;
-overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
-white-space: nowrap;
-}
-
-:root {
---navbar-link-color: #000000;
-}
-
-.navbar-scroll::-webkit-scrollbar {
-height: 6px;
-}
-.navbar-scroll::-webkit-scrollbar-thumb {
-background: var(--navbar-link-color);
-border-radius: 3px;
-}
-.navbar-scroll::-webkit-scrollbar-track {
-background: var(--gray, #eee);
-}
-
-
-.navbar-scroll {
--ms-overflow-style: none;  /* IE & Edge */
-scrollbar-width: none;     /* Firefox */
-}
-.navbar-scroll::-webkit-scrollbar {
-display: none;             /* Chrome, Safari, Opera */
-}
-
-/* ========================================================================
-Button 
-========================================================================== */
-
-/* Primary Button */
-.uk-button-primary {
-background-color: var(--dn-text, #000);
-color: #fff;
-}
-
-/* Primary Button Hover */
-.uk-button-primary:hover {
-background-color: var(--dn-text, #000);
-color: #fff;
-}
-
-/* Primary Button Active */
-.uk-button-primary:active,
-.uk-button-primary.uk-active {
-background-color: var(--dn-text, #000);
-color: #fff;
-}
-
-/* Secondary Button */
-.uk-button-secondary {
-background-color: var(--dn-text, #000);
-color: #fff;
-border: 1px solid transparent;
-}
-
-/* Secondary Button Hover */
-.uk-button-secondary:hover {
-background-color: #fff;
-color: var(--dn-text, #000);
-}
-
-/* Secondary Button Active */
-.uk-button-secondary:active,
-.uk-button-secondary.uk-active {
-background-color: var(--dn-text, #000);
-color: #fff;
-}
-
-/* Contextual Secondary Button Overrides for UIkit Sections/Cards/Overlay */
-.uk-light .uk-button-secondary,
-.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary,
-.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary,
-.uk-tile-primary:not(.uk-preserve-color) .uk-button-secondary,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-button-secondary,
-.uk-card-primary.uk-card-body .uk-button-secondary,
-.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary,
-.uk-card-secondary.uk-card-body .uk-button-secondary,
-.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary,
-.uk-overlay-primary .uk-button-secondary,
-.uk-offcanvas-bar .uk-button-secondary {
-background-color: var(--dn-text, #000);
-color: #fff;
-}
-
-/* ========================================================================
-Links
-========================================================================== */
-
-.uk-link {
-text-decoration: underline;
-cursor: pointer;
-}
-
-.uk-link:hover,
-.uk-link-toggle:hover .uk-link {
-text-decoration: none;
-}
-
-/* ========================================================================
-Lightbox
-========================================================================== */
-
-.uk-lightbox-button {
-box-sizing: border-box;
-width: 50px;
-height: 50px;
-background: rgba(0, 0, 0, 0.3);
-color: rgba(255, 255, 255, 0.7);
-border-radius: 100%;
-/* 1 */
-display: inline-flex;
-justify-content: center;
-align-items: center;
-}
-
-.uk-lightbox-iframe {
-width: 90%;
-height: 90%;
-border: 0px solid black;
-border-radius: 0; /* Default: no rounding for Chrome, Brave, etc. */
-}
-
-/* Safari-only override */
-@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
-.uk-lightbox-iframe {
-border-radius: 25px;
-}
-}
-
-.uk-lightbox-toolbar {
-padding: 5px 5px;
-background: transparent;
-color: rgba(255, 255, 255, 0.7);
-}
-.uk-lightbox-toolbar > * {
-color: rgba(255, 255, 255, 0.7);
-}
-
-.uk-lightbox-toolbar-icon {
-box-sizing: border-box;
-width: 50px;
-height: 50px;
-background: #000;
-color: #fff;
-border-radius: 100%;
-/* 1 */
-display: inline-flex;
-justify-content: center;
-align-items: center;
-}
-
-/* ===== keep only the close button always visible (preserve exact look) ===== */
-
-/* wide selector to match common UIkit close button variants */
-.uk-lightbox .uk-lightbox-button.uk-close,
-.uk-lightbox .uk-lightbox-button.uk-close svg,
-.uk-lightbox .uk-close,
-.uk-lightbox [data-uk-close],
-.uk-lightbox [data-uk-close] > * {
-/* DO NOT change visual properties (width/height/background/color/border-radius/flex)
-— we only override visibility/stacking/interaction and remove hide transforms. */
-position: fixed !important;        /* remove from hidden parent so it stays visible */
-top: 5px !important;               /* align with toolbar padding — preserves placement */
-right: 5px !important;             /* align with toolbar padding */
-z-index: 999999 !important;        /* above overlays */
-display: inline-flex !important;   /* keep your inline-flex layout */
-opacity: 0.7 !important;             /* force fully visible */
-visibility: visible !important;    /* force visible */
-pointer-events: auto !important;   /* clickable even if parent is disabled */
-transform: none !important;        /* cancel hide transforms */
-transition: none !important;       /* prevent fade-out transitions */
-animation: none !important;        /* stop any hiding animations */
-}
-
-/* If UIkit sets helper classes, undo them for close only */
-.uk-lightbox .uk-lightbox-button.uk-close.uk-hidden,
-.uk-lightbox .uk-lightbox-button.uk-close.uk-invisible,
-.uk-lightbox .uk-close.uk-hidden,
-.uk-lightbox .uk-close.uk-invisible,
-.uk-lightbox [data-uk-close].uk-hidden,
-.uk-lightbox [data-uk-close].uk-invisible {
-display: inline-flex !important;
-opacity: 0.7 !important;
-visibility: visible !important;
-pointer-events: auto !important;
-}
-
-/* keep SVG/icon inside intact (do not change color/size) */
-.uk-lightbox .uk-lightbox-button.uk-close svg,
-.uk-lightbox .uk-close svg {
-position: static !important;
-width: auto !important;
-height: auto !important;
-}
-
-/* mobile tweak to avoid overlap while preserving look (keeps same size) */
-@media (max-width: 480px) {
-.uk-lightbox .uk-lightbox-button.uk-close,
-.uk-lightbox .uk-close,
-.uk-lightbox [data-uk-close] {
-top: 8px !important;
-right: 8px !important;
-}
-}
-
-.uk-lightbox,
-.uk-lightbox.uk-open,
-.uk-lightbox .uk-lightbox-items {
-  z-index: 9999 !important; /* or even higher */
-}
-
-/* ========================================================================
-Slider
-========================================================================== */
-
-.uk-slidenav {
-padding: 5px 10px;
-color: rgba(102, 102, 102, 0.5);
-transition: color 0.1s ease-in-out;
-width: 50px;
-height: 50px;
-background: rgba(0, 0, 0, 0.3);
-color: rgba(255, 255, 255, 0.7);
-border-radius: 100%;
-display: inline-flex;
-justify-content: center;
-align-items: center;
-
-}
-
-/* ========================================================================
-Additional CSS:
-========================================================================== */
-
-html {
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-button:focus,
-button:active {
--moz-outline: 0 !important;
--ms-outline:0 !important;
--o-outline: 0 !important;
--webkit-outline: 0 !important;
-}
-
-.uk-border-rounded {
-border-radius: 25px;
-}
-
-/* ============================
-Dynamic Navbar & Mobile Menu
-=========================== */
-
-/* ---------- Mobile + Tablet: up to 1024px ---------- */
-@media (max-width: 1024px) {
-
-  /* --- Navbar container --- */
-  #dynamic-navbar-container,
-  nav.uk-navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* keep logo on left */
-    width: 100%;
-    min-height: 60px;
-    background-color: var(--navbar-bg-color, #fff);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* --- Navbar UL --- */
-  #dynamic-navbar-container ul.navbar-scroll,
-  nav.uk-navbar-container ul.navbar-scroll {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* --- Hide all text links, keep layout --- */
-  #dynamic-navbar-container ul.navbar-scroll a:not(:has(img)),
-  nav.uk-navbar-container ul.navbar-scroll a:not(:has(img)) {
-    visibility: hidden;       /* hides but keeps space */
-    pointer-events: none;     /* prevents clicks */
-    height: 0;                /* optional: collapse vertical space */
-    margin: 0;
-    padding: 0;
-  }
-
-  /* --- Logo link visible --- */
-  #dynamic-navbar-container ul.navbar-scroll a:has(img),
-  nav.uk-navbar-container ul.navbar-scroll a:has(img) {
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  /* --- Logo image styling --- */
-  #dynamic-navbar-container ul.navbar-scroll a:has(img) img,
-  nav.uk-navbar-container ul.navbar-scroll a:has(img) img {
-    display: block;
-    max-height: 40px;
-    width: auto;
-  }
-
-/* --- Logo image spacing --- */
-#dynamic-navbar-container ul.navbar-scroll a:has(img) img,
-nav.uk-navbar-container ul.navbar-scroll a:has(img) img {
-    display: block;
-    max-height: 40px;
-    width: auto;
-    margin-left: 10px; /* move logo 10px from left without breaking flex alignment */
-}
-
-  /* --- Mobile Menu Toggle (Hamburger) --- */
-  #mobile-menu-toggle {
-    display: flex;
-    position: fixed;
-    top: 12.5px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    isolation: isolate;
-    background: transparent;
-  }
-
-  #mobile-menu-toggle .bar {
-    width: 30px;
-    height: 2px;
-    background-color: var(--navbar-link-color, #000);
-    position: absolute;
-    border-radius: 1px;
-    transition: all 0.4s ease;
-    z-index: 2;
-  }
-
-  #mobile-menu-toggle .bar1 { top: 12px; }
-  #mobile-menu-toggle .bar2 { top: 22px; }
-
-  #mobile-menu-toggle.open .bar1 {
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-  }
-
-  #mobile-menu-toggle.open .bar2 {
-    top: 50%;
-    transform: translateY(-50%) rotate(-45deg);
-  }
-
-  /* --- Mobile Menu Panel --- */
-  #mobile-menu {
-    display: none;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: var(--navbar-bg-color, #fff);
-    color: var(--navbar-text-color, #000);
-    padding: 1rem 0;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 9998;
-  }
-
-  #mobile-menu.show {
-    display: flex !important;
-  }
-
-  #mobile-menu a {
-    display: block;
-    width: 100%;
-    box-sizing:border-box;
-    margin: 0.5rem 0;
-    padding: 0.5rem 1.25rem;
-    text-align: center;
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    color: var(--navbar-text-color, #000);
-    text-decoration: none;
-    background: transparent;
-  }
-
-  /* Hide logo in mobile menu (optional) */
-  #mobile-menu .navbar-logo { display: none; }
-}
-
-/* ---------- Large screens: 1025px and above ---------- */
-@media (min-width: 1025px) {
-  #mobile-menu-toggle { display: none !important; }
-  #mobile-menu { display: none; }
-
-  /* Navbar container */
-  #dynamic-navbar-container,
-  nav.uk-navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    min-height: 60px;
-    background-color: var(--navbar-bg-color, #fff);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Navbar links visible */
-  #dynamic-navbar-container ul.navbar-scroll a,
-  nav.uk-navbar-container ul.navbar-scroll a {
-    display: inline-block !important;
-    visibility: visible !important;
-    height: auto !important;
-    margin: initial;
-    padding: initial;
-    text-decoration: none;
-  }
-}
-
-#dynamic-navbar-container .navbar-scroll a:has(img) {
-  text-decoration: none !important;
-  border-bottom: none !important;
-}
-
-/* Prevent underline/bottom-border on logo link in preview/export too */
-nav.uk-navbar-container .navbar-scroll a:has(img),
-.navbar-scroll a:has(img){
-  text-decoration: none !important;
-  border-bottom: none !important; /* overrides .uk-active underline */
-}
-
-/* Hard-kill the bar divider line */
-#editor-dropnavbar.dn-bar,
-.dn-bar{
-  border: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.accordion-icon {
-  transition: transform 0.2s ease;
-}
-
-/* When accordion item is open */
-.uk-open .accordion-icon {
-  transform: rotate(45deg);
-}
-</style>
 
 
 <link id="custom-font-link" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Trade+Winds&amp;display=swap">
-<style id="export-font-css">
-                body,
-                h1, h2, h3, h4, h5, h6,
-                .live-heading,
-                .live-subtitle,
-                .live-paragraph,
-                a.uk-button {
-                    font-family: 'Trade Winds', sans-serif !important;
-                }
-            </style>
+
+
 
 
 </head>
-<body class="uk-background-muted" id="top">
+<body class="uk-background-muted sc-user-site" id="top">
 <h1 id="site-title-h1" class="visually-hidden">Sara Ferro - Regista | Artista | Scrittrice</h1>
 
 <!-- Mobile Menu (Preview/Export) -->
@@ -670,13 +509,14 @@ nav.uk-navbar-container .navbar-scroll a:has(img),
 })();
 </script>
 
-<nav class="uk-navbar-container" style="background:#5e30eb;position:sticky;top:0;z-index:999;">
-<ul class="navbar-scroll" uk-scrollspy-nav="closest: a; scroll: true; offset: 100" style="color:#ff9300;">
-<li><a class="navbar-logo-link" href="#top"><img src="media/logo.png" alt="Sara Ferro - Regista | Artista | Scrittrice" class="navbar-logo"></a></li><li><a href="#section-1">Sara Ferro</a></li><li><a href="#section-2">Foto</a></li><li><a href="#section-5">Gif</a></li><li><a href="#section-7">Mostre</a></li><li><a href="#section-8">Opere</a></li><li><a href="#section-9">Pubblicazioni</a></li><li><a href="#section-11">Video</a></li><li><a href="#section-13">Xpanded Cinema</a></li>
+<nav class="uk-navbar-container sc-dynamic-navbar" style="background:rgba(94,48,235,1);position:sticky !important;top:0 !important;z-index:9000 !important;">
+<ul class="navbar-scroll" data-sc-preview-nav="1" style="color:#ff9300;">
+<li><a class="navbar-logo-link sc-page-active" href="index.html"><img src="media/logo.png" alt="Sara Ferro - Regista | Artista | Scrittrice" class="navbar-logo"></a></li><li class="sc-page-heading-link"><a href="#sara-ferro">Sara Ferro</a></li><li class="sc-page-heading-link"><a href="#foto">Foto</a></li><li class="sc-page-heading-link"><a href="#gif">Gif</a></li><li class="sc-page-heading-link"><a href="#mostre">Mostre</a></li><li class="sc-page-heading-link"><a href="#opere">Opere</a></li><li class="sc-page-heading-link"><a href="#pubblicazioni">Pubblicazioni</a></li><li class="sc-page-heading-link"><a href="#video">Video</a></li><li class="sc-page-heading-link"><a href="#xpanded-cinema">Xpanded Cinema</a></li>
 </ul>
 </nav>
 
-<section id="section-0" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
+
+<section id="1" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;">
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#ff9300;">
 <iframe srcdoc="<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
@@ -804,11 +644,11 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 </div>
 
 </section>
-<section id="section-1" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
-
+<section id="sara-ferro" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#5e30eb;">
 <div class="uk-background-fixed uk-background-center-center uk-height-medium uk-border-rounded uk-box-shadow-large"
-style="background-image: url(media/mediafile1.jpeg); background-size: cover; background-position: center; min-height:400px;">
+style="background-image: url(media/Sara-Ferro-Sara-Ferro-W-yyyy-Milano-studia-e-si-laurea-in-Sociologia-specializzandosi-in-Media-Ha-un-alterego-detective-undercover-sui-generis-che-segue-indizi-antiquari-spia-scene-subculturali-transumane-e-frequenta-mondi-piu-esoterici-che-esotici-ma-non-tralasciando-mai-di-curare-un-distaccato-piglio-etnologico-Vive-tra-nonchalanche-ed-estrema-versatilita-Sua-passione-i-vertici-del-triangolo-industriale-natali-milanesi-decadi-genovesi-orizzonti-sulle-vette-torinesi-Ha-tutto-un-passato-tra-altre-citta-ancora-tutte-ufficialmente-darte-come-Berlino-e-Venezia-e-un-po-di-Londra-Difficile-starle-dietro-mentre-salta-da-una-sinapsi-alla-prossima-sinergia-e-una-moving-imaginist-con-suo-campo-di-elezione-nelle-moving-images-che-ama-si-animino-sulle-piattaforme-online-mosse-da-onde-digitali-Vorrebbe-lasciare-il-segno-nella-teoria-sociologica-attraverso-riflessioni-di-natura-audiovisiva-oppure-riflessi-ottici-che-con-uno-stimolo-visivo-potente-si-colleghino-ipertestualmente-ad-informazioni-di-natura-simbolica-e-dunque-universale-La-sua-sperimentazione-ha-allure-psicogeografica-anche-quando-i-territori-sono-quelli-squisitamente-mentali-Se-di-studi-e-sociologa-magistrale-e-da-sempre-imprestata-alla-germanistica-che-appunto-frequenta-dai-tempi-accademici-in-gran-parte-trascorsi-a-Berlino-Oltre-a-tradurre-letteratura-traduce-sostrati-intercettati-nella-cultura-tedesca-in-immagini-in-movimento-trasporta-impressioni-da-carta-su-altri-media-trasferisce-paesaggi-culturali-e-panorami-sociali-in-mondi-sintetici-di-virtuale-tuttavia-spesso-scottante-realta-non-per-forza-attuale-tuttavia-di-norma-con-forte-potenziale-di-riattualizzazione-di-revival-di-rediviva-vivacita-Le-cose-germaniche-rientrano-nel-suo-orizzonte-di-senso-da-cui-sconfina-pero-piu-che-di-sovente-in-cerca-di-cartine-di-tornasole-per-testarne-la-bonta-ben-oltre-lidealita-come-si-suole-per-le-idee-valide-Se-non-traduce-filma-o-dirige-ambienta-mondi-sintetici-e-cura-transfer-culturali-tra-vecchie-e-nuove-psichedelie-e-cybermanifesti-scrive-poemetti-semiseri.jpeg); background-size: cover; background-position: center; min-height:400px;">
 </div>
 <div class="uk-text-center uk-margin-large-top"
 uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:150; repeat:false">
@@ -816,18 +656,18 @@ uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:140; offset:15
 <div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
 <h2 class="live-heading uk-heading-2xlarge" style="color: #ffffff;">Sara Ferro</h2>
 <div class="live-subtitle uk-heading-medium" style="color:#ffffff">Sara Ferro W. (yyyy Milano) studia e si laurea in Sociologia, specializzandosi in Media. Ha un alterego detective undercover sui generis, che segue indizi antiquari, spia scene subculturali transumane e frequenta mondi più esoterici che esotici, ma non tralasciando mai di curare un distaccato piglio etnologico. Vive tra nonchalanche ed estrema versatilità. Sua passione i vertici del triangolo industriale, natali milanesi, decadi genovesi, orizzonti sulle vette torinesi. Ha tutto un passato tra altre città ancora, tutte ufficialmente d’arte, come Berlino e Venezia e un po’ di Londra. Difficile starle dietro mentre salta da una sinapsi alla prossima sinergia, è una moving imaginist con suo campo di elezione nelle moving images che ama si animino sulle piattaforme online mosse da onde digitali. Vorrebbe lasciare il segno nella teoria sociologica attraverso riflessioni di natura audiovisiva oppure riflessi ottici che con uno stimolo visivo potente si colleghino ipertestualmente ad informazioni di natura simbolica e dunque universale. La sua sperimentazione ha allure psicogeografica, anche quando i territori sono quelli squisitamente mentali.  Se di studi è sociologa magistrale è da sempre imprestata alla germanistica che appunto frequenta dai tempi accademici in gran parte trascorsi a Berlino. Oltre a tradurre letteratura traduce sostrati intercettati nella cultura tedesca in immagini in movimento, trasporta impressioni da carta su altri media, trasferisce paesaggi culturali e panorami sociali in mondi sintetici di virtuale tuttavia spesso scottante realtà, non per forza attuale, tuttavia di norma con forte potenziale di riattualizzazione, di revival, di rediviva vivacità.  Le cose germaniche rientrano nel suo orizzonte di senso da cui sconfina però più che di sovente in cerca di cartine di tornasole per testarne la bontà ben oltre l’idealità, come si suole per le idee valide. Se non traduce, filma o dirige, ambienta mondi sintetici e cura transfer culturali tra vecchie e nuove psichedelie e cybermanifesti, scrive poemetti semiseri.</div>
-<a href="mailto:ciao@saraferro.com" class="uk-button uk-button-default uk-margin-top uk-border-rounded" target="_blank">Scrivimi</a>
+<div class="sc-content-button-pair"><a href="mailto:ciao@saraferro.com" class="sc-core-cta sc-core-cta-default" target="_blank" rel="noopener">Scrivimi</a></div>
 </div>
 
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-2" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-
+<section id="foto" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#ff9300;">
 <div class="uk-grid-medium uk-child-width-1-1@s uk-flex-middle" uk-grid>
-<div class="uk-width-1-2@m"><img src="media/mediafile2.jpeg"
+<div class="uk-width-1-2@m"><img src="media/Foto.jpeg"
 alt="Foto"
 class="uk-border-rounded uk-box-shadow-large"
 uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:0; offset:120; repeat:false"
@@ -846,711 +686,404 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
 
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-3" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
-<div class="uk-container uk-padding" style="background:#5e30eb; color:#ff9300">
-      
-      
-      <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m"
-           uk-grid="masonry: true" uk-lightbox="animation: slide; toggle: a" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150; repeat: false">
-        <div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img1.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img1.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img2.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img2.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img3.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img3.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img4.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img4.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img5.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img5.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img6.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img6.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img7.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img7.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img8.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img8.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img9.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img9.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img10.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img10.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img11.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img11.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img12.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img12.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img13.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img13.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img14.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img14.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img15.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img15.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img16.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img16.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img17.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img17.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img18.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img18.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img19.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img19.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img20.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img20.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img21.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img21.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img22.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img22.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img23.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img23.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img24.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img24.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img25.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img25.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img26.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img26.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img27.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img27.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img28.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img28.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img29.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img29.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img30.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img30.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img31.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img31.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img32.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img32.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img33.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img33.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img34.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img34.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img35.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img35.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img36.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img36.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img37.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img37.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img38.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img38.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img39.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img39.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img40.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img40.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img41.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img41.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img42.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img42.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img43.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img43.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img44.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img44.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img45.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img45.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img46.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img46.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img47.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img47.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img48.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img48.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img49.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img49.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img50.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img50.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img51.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img51.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img52.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img52.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img53.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img53.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img54.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img54.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img55.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img55.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img56.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img56.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img57.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img57.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img58.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img58.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img59.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img59.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img60.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img60.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img61.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img61.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img62.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img62.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img63.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img63.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img64.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img64.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img65.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img65.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img66.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img66.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img67.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img67.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img68.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img68.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img69.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img69.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img70.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img70.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img71.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img71.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img72.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img72.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img73.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img73.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img74.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img74.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img75.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img75.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img76.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img76.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-<div>
-    <a class="uk-inline" data-type="image" href="media/gallery4_img77.jpg" 
-       data-caption="Sara Ferro" 
-       aria-label="Sara Ferro">
-      <img class="uk-border-rounded" style="width:100%;height:auto;display:block" 
-           src="media/gallery4_img77.jpg" 
-           alt="Sara Ferro">
-    </a>
-  </div>
-      </div>
+<section id="4" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content sc-gallery-panel" style="width:100%;margin-top:auto;margin-bottom:auto;"><div class="uk-container uk-padding" style="background:#5e30eb; color:#ff9300">
+    
+    
+    <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m"
+         uk-grid="masonry: true" uk-lightbox="animation: slide; toggle: a"
+         uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150; repeat: false">
+      <div data-sc-gallery-index="0">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro.jpg" alt="Sara Ferro">
+      </a>
     </div>
+<div data-sc-gallery-index="1">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-2.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-2.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="2">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-3.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-3.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="3">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-4.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-4.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="4">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-5.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-5.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="5">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-6.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-6.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="6">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-7.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-7.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="7">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-8.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-8.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="8">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-9.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-9.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="9">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-10.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-10.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="10">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-11.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-11.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="11">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-12.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-12.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="12">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-13.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-13.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="13">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-14.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-14.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="14">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-15.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-15.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="15">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-16.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-16.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="16">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-17.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-17.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="17">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-18.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-18.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="18">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-19.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-19.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="19">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-20.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-20.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="20">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-21.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-21.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="21">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-22.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-22.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="22">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-23.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-23.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="23">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-24.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-24.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="24">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-25.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-25.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="25">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-26.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-26.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="26">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-27.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-27.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="27">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-28.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-28.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="28">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-29.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-29.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="29">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-30.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-30.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="30">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-31.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-31.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="31">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-32.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-32.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="32">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-33.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-33.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="33">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-34.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-34.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="34">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-35.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-35.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="35">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-36.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-36.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="36">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-37.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-37.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="37">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-38.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-38.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="38">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-39.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-39.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="39">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-40.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-40.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="40">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-41.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-41.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="41">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-42.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-42.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="42">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-43.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-43.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="43">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-44.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-44.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="44">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-45.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-45.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="45">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-46.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-46.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="46">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-47.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-47.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="47">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-48.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-48.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="48">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-49.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-49.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="49">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-50.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-50.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="50">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-51.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-51.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="51">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-52.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-52.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="52">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-53.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-53.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="53">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-54.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-54.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="54">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-55.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-55.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="55">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-56.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-56.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="56">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-57.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-57.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="57">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-58.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-58.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="58">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-59.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-59.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="59">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-60.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-60.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="60">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-61.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-61.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="61">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-62.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-62.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="62">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-63.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-63.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="63">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-64.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-64.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="64">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-65.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-65.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="65">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-66.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-66.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="66">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-67.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-67.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="67">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-68.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-68.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="68">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-69.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-69.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="69">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-70.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-70.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="70">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-71.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-71.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="71">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-72.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-72.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="72">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-73.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-73.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="73">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-74.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-74.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="74">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-75.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-75.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="75">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-76.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-76.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+<div data-sc-gallery-index="76">
+      <a class="uk-inline" data-type="image" href="media/Sara-Ferro-77.jpg" data-caption="Sara Ferro" aria-label="Sara Ferro">
+        <img class="uk-border-rounded" style="width:100%;height:auto;display:block" src="media/Sara-Ferro-77.jpg" alt="Sara Ferro">
+      </a>
+    </div>
+    </div>
+  </div></div>
 </section>
-<section id="section-4" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
+<section id="5" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;">
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#5e30eb;">
 <iframe srcdoc="<!-- Image Gallery -->
@@ -1700,8 +1233,8 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 </div>
 
 </section>
-<section id="section-5" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-
+<section id="gif" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#ff9300;">
 <div class="uk-grid-medium uk-child-width-1-1@s uk-flex-middle" uk-grid>
 <div class="uk-width-1-2@m"><img src="https://media.giphy.com/media/6WNXYZfqeuh24oRAJ0/giphy.gif"
@@ -1723,9 +1256,9 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
 
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-6" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
+<section id="7" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;">
 
 <div style="position:relative; width:100%; height:100vh; margin:0; padding:0; background:#5e30eb;">
 <iframe srcdoc="<style>
@@ -1787,36 +1320,38 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
 </div>
 
 </section>
-<section id="section-7" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-
+<section id="mostre" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#ff9300;">
 <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-wrap">
 <div class="uk-text-center">
 <div class="uk-border-rounded uk-box-shadow-large uk-overflow-hidden" style="max-width:900px; width:100%; margin:0 auto;">
-<iframe src="https://www.youtube.com/embed/IZYKajLVm84?autoplay=1&mute=1&controls=0&loop=1&playlist=IZYKajLVm84&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen uk-responsive uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></iframe>
+<div class="sc-provider-video-frame" style="position:relative;width:100%;">
+         <iframe src="https://www.youtube.com/embed/IZYKajLVm84?autoplay=1&mute=1&controls=0&loop=1&playlist=IZYKajLVm84&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen uk-responsive uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></iframe>
+       </div>
 </div>
 <div class="uk-margin-large-top">
 
 <div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
 <h2 class="live-heading uk-heading-large" style="color: #ffffff;">Mostre</h2>
 
-<a href="https://artoldo.com/exhibitions.html" class="uk-button uk-button-secondary uk-margin-top uk-border-rounded" target="_blank">Guarda le mostre</a>
+<div class="sc-content-button-pair"><a href="https://artoldo.com/exhibitions.html" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda le mostre</a></div>
 </div>
 
 </div>
 </div>
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-8" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
-<div class="uk-container uk-padding" style="background:#5e30eb; color:#ff9300">
+<section id="opere" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content sc-grid-panel" style="width:100%;margin-top:auto;margin-bottom:auto;"><div class="uk-container uk-padding" style="background:#5e30eb; color:#ff9300">
       <h1 class="uk-heading uk-text-center" style="color:#ff9300" uk-scrollspy="cls: uk-animation-slide-top; delay: 0; offset: 100; repeat: true"><span>Opere</span></h1>
       
       <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 120; repeat: false">
         <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile10_grid.jpg" alt="Achtung Banditen?!" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Achtung-Banditen-VR-Desktop-Tablet-Smartphone.jpg" alt="Achtung Banditen?!" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Achtung Banditen?!</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: Desktop / Tablet / Smartphone</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1826,7 +1361,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile11_grid.jpg" alt="A-Cinema" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-A-Cinema-VR-Desktop-Tablet-Smartphone.jpg" alt="A-Cinema" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">A-Cinema</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: Desktop / Tablet / Smartphone</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1836,7 +1371,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile12_grid.jpg" alt="Otium &amp; The City" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Otium-and-The-City-Ar-Tablet-Smartphone.jpg" alt="Otium &amp; The City" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Otium &amp; The City</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">Ar: Tablet / Smartphone</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1846,7 +1381,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile13_grid.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Zoroaster-Superstar-VR-Casanova.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Zoroaster Superstar</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: Casanova</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1856,7 +1391,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile14_grid.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Zoroaster-Superstar-VR-Freddie-Mercury.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Zoroaster Superstar</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: Freddie Mercury</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1866,7 +1401,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile15_grid.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Zoroaster-Superstar-VR-David-Bowie.jpg" alt="Zoroaster Superstar" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Zoroaster Superstar</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: David Bowie</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1876,7 +1411,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile16_grid.jpg" alt="kaltcaldo" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-kaltcaldo-VR-Desktop-Tablet-Smartphone.jpg" alt="kaltcaldo" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">kaltcaldo</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">VR: Desktop / Tablet / Smartphone</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1886,7 +1421,7 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#ff9300;">
-          <img class="uk-border-rounded" src="media/mediafile17_grid.jpg" alt="Artifashion Intelligence" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Opere-Artifashion-Intelligence-Vr-The-Virtual-Journey-of-the-Mask.jpg" alt="Artifashion Intelligence" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#ff9300;">Artifashion Intelligence</h3>
           <p class="uk-margin-small-top" style="color:#ff9300;">Vr: The Virtual Journey of the Mask</p>
           <div class="uk-margin-small-top uk-text-center">
@@ -1895,13 +1430,13 @@ sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
         </div>
       </div>
       </div>
-    </div>
+    </div></div>
 </section>
-<section id="section-9" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-
+<section id="pubblicazioni" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#ff9300;">
 <div class="uk-grid-medium uk-child-width-1-1@s uk-flex-middle" uk-grid>
-<div class="uk-width-1-2@m"><img src="media/mediafile3.jpeg"
+<div class="uk-width-1-2@m"><img src="media/Pubblicazioni-di-Sara-Ferro-W.jpeg"
 alt="Pubblicazioni"
 class="uk-border-rounded uk-box-shadow-large"
 uk-scrollspy="cls: uk-animation-scale-up uk-animation-fade; delay:0; offset:120; repeat:false"
@@ -1912,7 +1447,7 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
 <div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
 <h2 class="live-heading uk-heading-large" style="color: #ffffff;">Pubblicazioni</h2>
 <div class="live-subtitle uk-heading-medium" style="color:#ffffff">di Sara Ferro W.</div>
-<a href="https://www.amazon.it/stores/author/B0D3CN5SCD/allbooks?ingress=0&visitId=aa433323-033d-4519-b34c-3449dea40f4d" class="uk-button uk-button-secondary uk-margin-top uk-border-rounded" target="_blank">Scopri di più</a>
+<div class="sc-content-button-pair"><a href="https://www.amazon.it/stores/author/B0D3CN5SCD/allbooks?ingress=0&visitId=aa433323-033d-4519-b34c-3449dea40f4d" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Scopri di più</a></div>
 </div>
 
 </div>
@@ -1920,10 +1455,10 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
 
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-10" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
-
+<section id="11" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content sc-slider-panel" style="width:100%;margin-top:auto;margin-bottom:auto;">
         <div style="background:#5e30eb; width:100vw; height:100vh; margin:0; padding:0; overflow:hidden;">
           
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
@@ -1933,111 +1468,101 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
 
       <ul class="uk-slider-items uk-child-width-1-1" style="height:100vh; margin:0; padding:0;">
         
-  <li>
+  <li data-sc-slider-index="0">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile4.jpeg" alt="" uk-cover>
+      <img src="media/Sineddoche-Torino-Poemetto.jpeg" alt="" uk-cover>
 
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            
            
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://www.amazon.it/Sineddoche-Torino-GE-MI-Sara-Ferro/dp/B0D3BTZPR6" target="_blank" rel="noopener">Leggi ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://www.amazon.it/Sineddoche-Torino-GE-MI-Sara-Ferro/dp/B0D3BTZPR6" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Leggi ora</a></div>
          </div>
       <div class="uk-position-bottom-center uk-position-small uk-text-center" style="color:#ffffff; text-shadow: 0 2px 10px rgba(0,0,0,.45);">Sineddoche Torino – Poemetto</div>
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="1">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile5.jpg" alt="" uk-cover>
+      <img src="media/Polyglottomania-Raccolta-Poetica.jpg" alt="" uk-cover>
 
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            
            
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://amzn.eu/d/01djU3xT" target="_blank" rel="noopener">Leggi ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://amzn.eu/d/01djU3xT" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Leggi ora</a></div>
          </div>
       <div class="uk-position-bottom-center uk-position-small uk-text-center" style="color:#ffffff; text-shadow: 0 2px 10px rgba(0,0,0,.45);">Polyglottomania – Raccolta Poetica</div>
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="2">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile6.jpeg" alt="" uk-cover>
+      <img src="media/La-Pagana-Traduzzione.jpeg" alt="" uk-cover>
 
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            
            
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://amzn.eu/d/gOvwoWr" target="_blank" rel="noopener">Leggi ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://amzn.eu/d/gOvwoWr" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Leggi ora</a></div>
          </div>
       <div class="uk-position-bottom-center uk-position-small uk-text-center" style="color:#ffffff; text-shadow: 0 2px 10px rgba(0,0,0,.45);">La Pagana – Traduzzione</div>
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="3">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile7.jpeg" alt="" uk-cover>
+      <img src="media/Venere-in-Pesci-Tradduzione.jpeg" alt="" uk-cover>
 
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            
            
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://amzn.eu/d/e5WcNna" target="_blank" rel="noopener">Leggi ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://amzn.eu/d/e5WcNna" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Leggi ora</a></div>
          </div>
       <div class="uk-position-bottom-center uk-position-small uk-text-center" style="color:#ffffff; text-shadow: 0 2px 10px rgba(0,0,0,.45);">Venere in Pesci – Tradduzione</div>
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="4">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile8.jpeg" alt="Heterography: Zoroaster Superstar" uk-cover>
+      <img src="media/Heterography-Zoroaster-Superstar-Religiographies-Vol-3-No-1-2024-108-128.jpeg" alt="Heterography: Zoroaster Superstar" uk-cover>
 
       
 
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Heterography: Zoroaster Superstar</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Religiographies, Vol. 3, No. 1 (2024): 108–128</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.github.io/images/Artoldo_2024_Zoroaster-Superstar.pdf" target="_blank" rel="noopener">Leggi ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://artoldo.github.io/images/Artoldo_2024_Zoroaster-Superstar.pdf" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Leggi ora</a></div>
          </div>
       
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="5">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
-      <img src="media/mediafile9.jpeg" alt="But Who Was Bernus? After Fulcanelli" uk-cover>
+      <img src="media/But-Who-Was-Bernus-After-Fulcanelli-Anthropos-and-Iatria-Anno-XXIV-No-1-p-86-98.jpeg" alt="But Who Was Bernus? After Fulcanelli" uk-cover>
 
       
 
@@ -2062,10 +1587,10 @@ style="width:100%; height:auto; display:block; margin:0 auto;"></div>
     </div>
   
         </div>
-      
+      </div>
 </section>
-<section id="section-11" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-
+<section id="video" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content" style="width:100%;margin-top:auto;margin-bottom:auto;">
 <div class="uk-padding-large" style="background:#ff9300;">
 <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-wrap">
 <div class="uk-text-center">
@@ -2085,10 +1610,10 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
 </div>
 </div>
 </div>
-
+</div>
 </section>
-<section id="section-12" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:60vh;padding:0;margin:0;">
-
+<section id="13" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#5e30eb;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content sc-slider-panel" style="width:100%;margin-top:auto;margin-bottom:auto;">
         <div style="background:#5e30eb; width:100vw; height:100vh; margin:0; padding:0; overflow:hidden;">
           
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
@@ -2098,7 +1623,7 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
 
       <ul class="uk-slider-items uk-child-width-1-1" style="height:100vh; margin:0; padding:0;">
         
-  <li>
+  <li data-sc-slider-index="0">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
@@ -2117,16 +1642,14 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">C. G. Jung on Alchemy</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Regia: Sara Ferro</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/jung" target="_blank" rel="noopener">Guarda ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://artoldo.com/jung" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda ora</a></div>
          </div>
       
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="1">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
@@ -2145,16 +1668,14 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Embassy of the Free Mind</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Regia: Sara Ferro</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/embassyofthefreemind" target="_blank" rel="noopener">Guarda ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://artoldo.com/embassyofthefreemind" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda ora</a></div>
          </div>
       
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="2">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
@@ -2173,16 +1694,14 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">The Ritman Library</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Regia: Sara Ferro</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/theritmanlibrary" target="_blank" rel="noopener">Guarda Ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://artoldo.com/theritmanlibrary" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda Ora</a></div>
          </div>
       
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="3">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
@@ -2201,16 +1720,14 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Ugo Dossi - Sopra L&#39;Arte e il Cosmo</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Regia: Sara Ferro</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/ugodossi" target="_blank" rel="noopener">Guarda ora</a>
-         </div>
+           <div class="sc-content-button-pair"><a href="https://artoldo.com/ugodossi" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda ora</a></div>
          </div>
       
 
     </div>
   </li>
 
-  <li>
+  <li data-sc-slider-index="4">
     <div class="uk-cover-container"
          style="width:100vw;height:100vh;overflow:hidden;">
 
@@ -2229,9 +1746,25 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
            <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Secropolis</h2>
            <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Regia: Sara Ferro</div>
-           <div class="uk-margin-top">
-           <a class="uk-button uk-button-secondary uk-border-rounded" href="https://artoldo.com/secropolis" target="_blank" rel="noopener">Guarda ora</a>
+           <div class="sc-content-button-pair"><a href="https://artoldo.com/secropolis" class="sc-core-cta sc-core-cta-dark" target="_blank" rel="noopener">Guarda ora</a></div>
          </div>
+      
+
+    </div>
+  </li>
+
+  <li data-sc-slider-index="5">
+    <div class="uk-cover-container"
+         style="width:100vw;height:100vh;overflow:hidden;">
+
+      <img src="media/Heidis-Kulturkampf-Mockumentary-Coming-Soon.jpeg" alt="Heidi&#39;s Kulturkampf" uk-cover>
+
+      
+
+      <div class="uk-position-center uk-text-center uk-padding-small" style="color:#ffffff; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,.55);">
+           <h2 class="live-heading h-md" style="color:#ffffff; margin:0;">Heidi&#39;s Kulturkampf</h2>
+           <div class="live-paragraph p-md uk-margin-small-top" style="color:#ffffff;">Mockumentary – Coming Soon</div>
+           
          </div>
       
 
@@ -2249,16 +1782,16 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
     </div>
   
         </div>
-      
+      </div>
 </section>
-<section id="section-13" class="uk-section uk-section-primary" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:60vh;padding:0;margin:0;">
-<div class="uk-container uk-padding" style="background:#ff9300; color:#5e30eb">
+<section id="xpanded-cinema" class="uk-section uk-section-primary sc-auto-panel" uk-height-viewport="offset-top: true" style="background:#ff9300;min-height:100vh;padding:0;margin:0;display:flex;flex-direction:column;box-sizing:border-box;">
+<div class="sc-panel-content sc-grid-panel" style="width:100%;margin-top:auto;margin-bottom:auto;"><div class="uk-container uk-padding" style="background:#ff9300; color:#5e30eb">
       <h1 class="uk-heading uk-text-center" style="color:#5e30eb" uk-scrollspy="cls: uk-animation-slide-top; delay: 0; offset: 100; repeat: true"><span>Xpanded Cinema</span></h1>
       <h3 class="uk-heading uk-text-center uk-padding-large uk-padding-remove-top" style="color:#5e30eb" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 0; offset: 120; repeat: true">Curatrice, Direttrice e Ideatrice di  Festival Cinematografici Internazionali</h3>
       <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 120; repeat: false">
         <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#5e30eb;">
-          <img class="uk-border-rounded" src="media/mediafile18_grid.jpg" alt="Hermetic Film Festival" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Xpanded-Cinema-Hermetic-Film-Festival.jpg" alt="Hermetic Film Festival" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#5e30eb;">Hermetic Film Festival</h3>
           
           <div class="uk-margin-small-top uk-text-center">
@@ -2268,7 +1801,7 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#5e30eb;">
-          <img class="uk-border-rounded" src="media/mediafile19_grid.jpg" alt="Innuendo Film Fest" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Xpanded-Cinema-Innuendo-Film-Fest.jpg" alt="Innuendo Film Fest" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#5e30eb;">Innuendo Film Fest</h3>
           
           <div class="uk-margin-small-top uk-text-center">
@@ -2278,7 +1811,7 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
       </div>
 <div>
         <div class="uk-card uk-card-default uk-card-body uk-border-rounded" style="color:#5e30eb;">
-          <img class="uk-border-rounded" src="media/mediafile20_grid.jpg" alt="Dress Code Film Festival" style="width:100%;height:auto;display:block;margin-bottom:12px;">
+          <img class="uk-border-rounded" src="media/Xpanded-Cinema-Dress-Code-Film-Festival.jpg" alt="Dress Code Film Festival" style="width:100%;height:auto;display:block;margin-bottom:12px;">
           <h3 class="uk-card-title uk-margin-remove-bottom" style="color:#5e30eb;">Dress Code Film Festival</h3>
           
           <div class="uk-margin-small-top uk-text-center">
@@ -2287,18 +1820,190 @@ uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false"></video>
         </div>
       </div>
       </div>
-    </div>
+    </div></div>
 </section>
 
 <footer class="uk-section uk-section-small" 
 style="background:#5e30eb; color:#ffffff; text-align:center;">
-<div class="footer-social" style="margin-bottom:10px;"><a href="https://www.amazon.it/stores/author/B0D3CN5SCD/about" uk-icon="icon: bag; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://artoldo.com" uk-icon="icon: link-external; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://wa.me/393286924090" uk-icon="icon: whatsapp; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://wundersaar.com" uk-icon="icon: wordpress; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://youtube.com/@artoldo" uk-icon="icon: youtube; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a><a href="https://saraferro.com/w/" uk-icon="icon: link; ratio: 1.5" target="_blank" style="margin:0 8px; color:#ffffff"></a></div>
+<div class="footer-social" style="margin-bottom:10px;"><a href="https://www.amazon.it/stores/author/B0D3CN5SCD/about" uk-icon="icon: bag; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a><a href="https://artoldo.com" uk-icon="icon: link-external; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a><a href="https://wa.me/393286924090" uk-icon="icon: whatsapp; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a><a href="https://wundersaar.com" uk-icon="icon: wordpress; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a><a href="https://youtube.com/@artoldo" uk-icon="icon: youtube; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a><a href="https://saraferro.com/w/" uk-icon="icon: link; ratio: 1.5" target="_blank" rel="noopener" style="margin:0 8px; color:#ffffff"></a></div>
+
+
 <p><strong>Sara Ferro - Regista | Artista | Scrittrice</strong></p>
 
 <p>&copy; 2026 Sara Ferro</p>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.6/dist/js/uikit-icons.min.js"></script>
+<script id="sc-protected-mail-runtime">
+(function(){
+  var KEY=0x5A;
+  function decode(hex){
+    try{
+      var bytes=[];
+      String(hex||'').replace(/../g,function(pair){bytes.push((parseInt(pair,16)^KEY)&255);return pair;});
+      if(window.TextDecoder) return new TextDecoder().decode(new Uint8Array(bytes));
+      var bin=''; for(var i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+      try{return decodeURIComponent(escape(bin));}catch(_){return bin;}
+    }catch(_){return '';}
+  }
+
+  function fieldLabel(el){
+    var id=el.id||'';
+    var label=id ? document.querySelector('label[for="'+CSS.escape(id)+'"]') : null;
+    var txt=label ? label.textContent.replace(/\s*\*\s*$/,'').trim() : '';
+    return txt || el.name || el.getAttribute('placeholder') || id || 'Field';
+  }
+
+  function collectMailBody(form){
+    var lines=[];
+    var handledRadio=new Set();
+
+    form.querySelectorAll('input, textarea, select').forEach(function(el){
+      if(el.disabled || el.type==='submit' || el.type==='button' || el.type==='hidden') return;
+
+      var key=fieldLabel(el);
+
+      if(el.type==='radio'){
+        var group=el.name||key;
+        if(handledRadio.has(group)) return;
+        handledRadio.add(group);
+        var selected=form.querySelector('input[type="radio"][name="'+CSS.escape(el.name||'')+'"]:checked');
+        lines.push(key+': '+(selected ? selected.value : 'No selection'));
+        return;
+      }
+
+      if(el.type==='checkbox'){
+        lines.push(key+': '+(el.checked ? (el.value && el.value!=='on' ? el.value : 'Yes') : 'No'));
+        return;
+      }
+
+      if(el.type==='file'){
+        var names=el.files && el.files.length
+          ? Array.from(el.files).map(function(f){return f.name;}).join(', ')
+          : 'No file selected';
+        lines.push(key+': '+names);
+        return;
+      }
+
+      var value=String(el.value||'').trim();
+      lines.push(key+': '+value);
+    });
+
+    return lines.join('\r\n');
+  }
+
+  function composeMail(form){
+    if(!form) return false;
+    if(typeof form.reportValidity==='function' && !form.reportValidity()) return false;
+
+    var email=decode(form.getAttribute('data-sc-protected-mail'));
+    if(!email) return false;
+
+    var subject=form.getAttribute('data-sc-mail-subject')||'Contact';
+    var body=collectMailBody(form);
+    var mailto='mailto:'+email
+      +'?subject='+encodeURIComponent(subject)
+      +'&body='+encodeURIComponent(body);
+
+    /* iOS/Safari: launch mailto directly inside the user's tap gesture. */
+    window.location.href=mailto;
+    return false;
+  }
+
+  window.scComposeProtectedMailto=composeMail;
+
+  function bindMailtoForm(form){
+    if(!form || form.dataset.scMailBound==='1') return;
+    form.dataset.scMailBound='1';
+    form.removeAttribute('action');
+    form.removeAttribute('method');
+
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      composeMail(form);
+      return false;
+    });
+  }
+
+  function activate(root){
+    (root||document).querySelectorAll('[data-sc-protected-mail]').forEach(function(el){
+      var email=decode(el.getAttribute('data-sc-protected-mail'));
+      if(!email) return;
+      if(el.matches('a')){
+        el.href='mailto:'+email;
+        var text=el.querySelector('[data-sc-protected-mail-text]');
+        if(text) text.textContent=email;
+      }else if(el.matches('form[data-sc-delivery="mailto"]')){
+        bindMailtoForm(el);
+      }
+    });
+  }
+  function boot(){
+    activate(document);
+    if(window.MutationObserver){
+      new MutationObserver(function(records){
+        records.forEach(function(r){r.addedNodes.forEach(function(n){if(n&&n.nodeType===1) activate(n);});});
+      }).observe(document.documentElement,{childList:true,subtree:true});
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot,{once:true});
+  else boot();
+})();
+</script>
+<script id="sc-form-file-runtime">
+(function(){
+  function bind(){
+    document.querySelectorAll('.sc-file-native:not([data-sc-file-bound])').forEach(function(input){
+      input.setAttribute('data-sc-file-bound','1');
+      input.addEventListener('change',function(){
+        var out=document.querySelector('[data-sc-file-name="'+input.id+'"]');
+        if(out) out.textContent=input.files&&input.files.length
+          ? Array.from(input.files).map(function(f){return f.name;}).join(', ')
+          : 'No file selected';
+      });
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bind,{once:true});
+  else bind();
+})();
+</script>
+
+
+
+<style>
+@media (max-width: 900px) {
+  #site-search-toggle,
+  #site-back-to-top {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+    padding: 4px !important;
+  }
+  #site-search-toggle > span,
+  #site-back-to-top > span,
+  #site-search-toggle svg,
+  #site-back-to-top svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+</style>
+<button id="site-back-to-top" type="button" aria-label="Back to top"
+  style="position:fixed;right:22px;left:auto;transform:none;bottom:22px;z-index:900;width:52px;height:52px;border:0;border-radius:50%;background:#ffffff;color:#000000;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;display:grid;place-items:center;">
+  <span uk-icon="chevron-up"></span>
+</button>
+<script>
+(function(){
+  var b=document.getElementById('site-back-to-top');
+  if(!b) return;
+  b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+
+<script src="assets/js/uikit.min.js"></script>
+<script src="assets/js/uikit-icons.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -2417,6 +2122,212 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMobileMenuVisibility();
 });
 </script>
+<script>
+/* CORE universal local-service notice
+   Works in Preview/blob:, exported file:// pages, dynamic Lightboxes,
+   Slideshow, Add Video, and same-origin/srcdoc Embed documents. */
+(function(){
+  function isLocalContext(win){
+    try {
+      var p=String((win||window).location.protocol||'');
+      return !(p === 'http:' || p === 'https:');
+    } catch(e) {
+      return true;
+    }
+  }
+
+  function isYouTubeSrc(src){
+    var s=String(src||'').toLowerCase();
+    return s.indexOf('youtube.com/embed/') !== -1 ||
+           s.indexOf('youtube-nocookie.com/embed/') !== -1 ||
+           s.indexOf('youtube.com/watch?') !== -1 ||
+           s.indexOf('youtu.be/') !== -1;
+  }
+
+  function warningText(){
+    return '<span style="display:block;white-space:normal;">YouTube does not allow local playback.<br>Upload the website to a server to play this video.</span>';
+  }
+
+  function ensurePositioned(el, win){
+    try {
+      if ((win||window).getComputedStyle(el).position === 'static') el.style.position='relative';
+    } catch(e) {
+      if (!el.style.position) el.style.position='relative';
+    }
+  }
+
+  function decorateYouTubeFrame(frame, doc, win){
+    if (!frame || frame.dataset.scLocalYoutubeDone === '1') return;
+    var src=String(frame.getAttribute('src')||'');
+    if (!isYouTubeSrc(src)) return;
+
+    frame.dataset.scLocalYoutubeDone='1';
+
+    var isFull = frame.classList.contains('sc-youtube-fullscreen-player');
+    var isSlider = frame.classList.contains('sc-slider-youtube-player');
+    var inLightbox = !!frame.closest('.uk-lightbox');
+
+    var host = frame.parentElement;
+    if (!host) return;
+    ensurePositioned(host, win);
+
+    // Preserve the errored player so users understand this is a local-playback limitation.
+    if (isFull || isSlider) {
+      frame.style.filter='blur(14px)';
+      frame.style.opacity='.55';
+    } else if (inLightbox) {
+      frame.style.opacity='.42';
+    } else {
+      frame.style.opacity='.48';
+    }
+
+    var notice=doc.createElement('div');
+    notice.className='sc-runtime-youtube-warning';
+    notice.innerHTML=warningText();
+    notice.style.boxSizing='border-box';
+    notice.style.textAlign='center';
+    notice.style.color='#fff';
+    notice.style.fontWeight='800';
+    notice.style.lineHeight='1.25';
+    notice.style.letterSpacing='.01em';
+    notice.style.pointerEvents='none';
+
+    if (isFull || isSlider) {
+      // Fullscreen Add Video + Slideshow: keep the player visible but blurred,
+      // and place the warning at the top so headings/subheadings/buttons remain visible.
+      notice.style.cssText += ';position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding:100px 28px 28px;background:transparent;font-size:clamp(16px,2vw,28px);z-index:2147483000;';
+    } else if (inLightbox) {
+      notice.style.cssText += ';position:absolute;top:18px;left:50%;transform:translateX(-50%);padding:12px 18px;background:rgba(255,145,0,.92);border-radius:12px;font-size:clamp(13px,1.25vw,18px);max-width:min(760px,calc(100% - 32px));width:max-content;z-index:2147483000;';
+    } else {
+      // Regular Add Video / custom Embed.
+      notice.style.cssText += ';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:28px;background:rgba(255,145,0,.92);font-size:clamp(16px,2vw,28px);z-index:2147483000;';
+    }
+
+    host.appendChild(notice);
+  }
+
+  function scanDocument(doc, win){
+    if (!doc || !isLocalContext(win)) return;
+
+    try {
+      doc.querySelectorAll('.sc-formspree-local-warning').forEach(function(notice){
+        notice.style.display='flex';
+      });
+    } catch(e) {}
+
+    try {
+      doc.querySelectorAll('iframe').forEach(function(frame){
+        var src=String(frame.getAttribute('src')||'');
+
+        // Direct YouTube iframe in Add Video / Slider / Lightbox / custom markup.
+        if (isYouTubeSrc(src)) decorateYouTubeFrame(frame,doc,win);
+
+        // Same-origin/srcdoc Embed: scan its inner document too.
+        try {
+          var innerDoc=frame.contentDocument;
+          var innerWin=frame.contentWindow;
+          if (innerDoc && innerDoc.documentElement) scanDocument(innerDoc,innerWin);
+        } catch(e) {}
+      });
+    } catch(e) {}
+  }
+
+  function scanAll(){
+    scanDocument(document,window);
+  }
+
+  document.addEventListener('submit',function(e){
+    if(!isLocalContext(window)) return;
+    var form=e.target;
+    if(form && form.matches && form.matches('.sc-generated-form[action*="formspree.io"]')){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  },true);
+
+  document.addEventListener('DOMContentLoaded',function(){
+    scanAll();
+    setTimeout(scanAll,100);
+    setTimeout(scanAll,500);
+  });
+
+  window.addEventListener('load',function(){
+    scanAll();
+    setTimeout(scanAll,300);
+    setTimeout(scanAll,1200);
+  });
+
+  // UIkit Lightbox and asynchronously generated Embed/Slider iframe content.
+  document.addEventListener('click',function(){
+    setTimeout(scanAll,50);
+    setTimeout(scanAll,250);
+    setTimeout(scanAll,700);
+  },true);
+
+  try {
+    new MutationObserver(function(){
+      scanAll();
+    }).observe(document.documentElement,{childList:true,subtree:true});
+  } catch(e) {}
+
+  // Covers iframe navigations / late srcdoc loading without aggressive polling.
+  setInterval(scanAll,1500);
+})();
+</script>
+
+<script>
+(function(){
+  function shuffle(el){
+    if(!el)return;
+    var a=Array.prototype.slice.call(el.children||[]);
+    for(var i=a.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var t=a[i];a[i]=a[j];a[j]=t;
+    }
+    a.forEach(function(child){el.appendChild(child);});
+  }
+  function run(){
+    document.querySelectorAll('.sc-random-gallery').forEach(function(section){
+      var grid=section.querySelector('[uk-lightbox][uk-grid],[uk-grid][uk-lightbox]');
+      shuffle(grid);
+    });
+    document.querySelectorAll('.sc-random-grid').forEach(function(section){
+      var grids=Array.prototype.slice.call(section.querySelectorAll('[uk-grid]'));
+      var grid=grids.find(function(g){return g.children&&g.children.length>1;});
+      shuffle(grid);
+    });
+    document.querySelectorAll('.sc-random-slider').forEach(function(section){
+      shuffle(section.querySelector('.uk-slider-items'));
+    });
+    try{if(window.UIkit)UIkit.update(document);}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',run);
+})();
+</script>
+<script>
+(function(){
+  function protect(root){
+    if(!root||!root.querySelectorAll)return;
+    function mark(el){
+      if(!el||el.nodeType!==1)return;
+      el.setAttribute('translate','no');
+      if(el.classList)el.classList.add('notranslate');
+    }
+    try{
+      if(root.matches&&root.matches('[uk-icon],[data-uk-icon],.uk-icon,.uk-icon-button'))mark(root);
+      root.querySelectorAll('[uk-icon],[data-uk-icon],.uk-icon,.uk-icon-button').forEach(mark);
+    }catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    protect(document);
+    try{
+      new MutationObserver(function(ms){
+        ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n&&n.nodeType===1)protect(n);});});
+      }).observe(document.documentElement,{childList:true,subtree:true});
+    }catch(e){}
+  });
+})();
+</script>
 
 <script>
 (function(){
@@ -2471,8 +2382,43 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('dragstart', function(e){ e.preventDefault(); });
   }
 
+  function syncHeadingActive(){
+    var nav=document.querySelector('.navbar-scroll[data-sc-preview-nav="1"]');
+    if(!nav) return;
+
+    var headingLinks=Array.from(nav.querySelectorAll('.sc-page-heading-link > a[href^="#"]'));
+    if(!headingLinks.length) return;
+
+    var offset=110;
+    var active=null;
+    var best=-Infinity;
+
+    headingLinks.forEach(function(a){
+      var id=(a.getAttribute('href')||'').slice(1);
+      if(!id) return;
+      var target=document.getElementById(id);
+      if(!target) return;
+
+      var top=target.getBoundingClientRect().top-offset;
+      if(top<=0 && top>best){
+        best=top;
+        active=a;
+      }
+    });
+
+    // Only heading links participate in scroll state.
+    // Page links are NEVER promoted as the "next" scroll target.
+    headingLinks.forEach(function(a){
+      a.classList.toggle('uk-active',a===active);
+    });
+  }
+
   function init(){
     document.querySelectorAll('.dn-scroll, .navbar-scroll').forEach(bind);
+    syncHeadingActive();
+    window.addEventListener('scroll',syncHeadingActive,{passive:true});
+    window.addEventListener('resize',syncHeadingActive);
+    window.__scSyncHeadingActive=syncHeadingActive;
   }
 
   if (document.readyState === 'loading') {
